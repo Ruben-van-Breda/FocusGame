@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BuildServerSettings">
+    <option name="LOGIN" value="" />
+    <option name="SERVER_URL" value="http://buildserver" />
+    <option name="REMEMBER_ME" value="true" />
+    <option name="USE_IDEA_PROXY_SETTINGS" value="true" />
+    <option name="INSPECTIONS_BUILD_TYPE_IDS" />
+    <option name="DUPLICATES_BUILD_TYPE_IDS" />
+    <option name="COVERAGE_SETTINGS" />
+    <option name="TEST_STATUS_ENABLED" value="true" />
+    <option name="TEST_STATUS_SHOW_SUCCESSFUL" value="false" />
+    <option name="POSTPONE_SUITABLE_CONFIGURATIONS_SEARCH" value="false" />
+    <option name="ARTIFACTS_BUILD_TYPE_IDS" />
+    <option name="PERFORM_COMMIT_IF_SUCCESSFUL" value="true" />
+    <option name="PERFORM_COMMIT_IF_NO_NEW_FAILED_TESTS" value="false" />
+    <option name="REQUEST_CONFIRMATON" value="false" />
+    <option name="PRE_TESTED_COMMIT" value="true" />
+    <option name="FILTER_BY_STATUS" value="false" />
+    <option name="FILTER_MARKED_AS_FIXED" value="false" />
+    <option name="SHOW_CLOSE_PROMPT" value="true" />
+    <option name="TOOL_WINDOW_SELECTED_CONTENT_INDEX" value="0" />
+    <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
+    <option name="showStatusBarWidget" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="Focus" targetName="Focus" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a95c042f-4f5e-44cd-99c0-4463cc2710eb" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ProjectId" id="1Zg2jNSGLZSEvhUm4eimANPoRx6" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Focus" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Focus" TARGET_NAME="Focus" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Focus" RUN_TARGET_NAME="Focus">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a95c042f-4f5e-44cd-99c0-4463cc2710eb" name="Default Changelist" comment="" />
+      <created>1585246550930</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585246550930</updated>
+      <workItem from="1585246556157" duration="1349000" />
+      <workItem from="1585309263184" duration="10327000" />
+      <workItem from="1585574982393" duration="4553000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="735" y="450" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585484834291">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state x="735" y="450" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2048.1280@0.0.2048.1280" timestamp="1585484834291" />
+    <state x="492" y="246" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1585246619243">
+      <screen x="0" y="23" width="1360" height="711" />
+    </state>
+    <state x="492" y="246" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.23.1360.711@0.23.1360.711" timestamp="1585246619243" />
+    <state x="506" y="155" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585247891140">
+      <screen x="0" y="23" width="1360" height="711" />
+    </state>
+    <state x="506" y="155" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1360.711@0.23.1360.711" timestamp="1585247891140" />
+    <state x="825" y="564" key="Github.CreateGistDialog" timestamp="1586200473167">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state x="825" y="564" key="Github.CreateGistDialog/0.0.2048.1280@0.0.2048.1280" timestamp="1586200473167" />
+    <state width="2006" height="370" key="GridCell.Tab.0.bottom" timestamp="1586200479047">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state width="2006" height="370" key="GridCell.Tab.0.bottom/0.0.2048.1280@0.0.2048.1280" timestamp="1586200479047" />
+    <state width="2006" height="370" key="GridCell.Tab.0.center" timestamp="1586200479045">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state width="2006" height="370" key="GridCell.Tab.0.center/0.0.2048.1280@0.0.2048.1280" timestamp="1586200479045" />
+    <state width="2006" height="370" key="GridCell.Tab.0.left" timestamp="1586200479038">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state width="2006" height="370" key="GridCell.Tab.0.left/0.0.2048.1280@0.0.2048.1280" timestamp="1586200479038" />
+    <state width="2006" height="370" key="GridCell.Tab.0.right" timestamp="1586200479046">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state width="2006" height="370" key="GridCell.Tab.0.right/0.0.2048.1280@0.0.2048.1280" timestamp="1586200479046" />
+    <state width="2006" height="360" key="GridCell.Tab.1.bottom" timestamp="1586200292325">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state width="2006" height="360" key="GridCell.Tab.1.bottom/0.0.2048.1280@0.0.2048.1280" timestamp="1586200292325" />
+    <state width="2006" height="360" key="GridCell.Tab.1.center" timestamp="1586200292324">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state width="2006" height="360" key="GridCell.Tab.1.center/0.0.2048.1280@0.0.2048.1280" timestamp="1586200292324" />
+    <state width="2006" height="360" key="GridCell.Tab.1.left" timestamp="1586200292323">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state width="2006" height="360" key="GridCell.Tab.1.left/0.0.2048.1280@0.0.2048.1280" timestamp="1586200292323" />
+    <state width="2006" height="360" key="GridCell.Tab.1.right" timestamp="1586200292324">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state width="2006" height="360" key="GridCell.Tab.1.right/0.0.2048.1280@0.0.2048.1280" timestamp="1586200292324" />
+    <state x="640" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1585574996775">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state x="640" y="380" key="com.intellij.ide.util.TipDialog/0.0.2048.1280@0.0.2048.1280" timestamp="1585574996775" />
+    <state x="425" y="234" key="com.intellij.ide.util.TipDialog/0.23.1360.711@0.23.1360.711" timestamp="1585246555157" />
+    <state x="601" y="236" width="845" height="807" key="find.popup" timestamp="1585482394318">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state x="601" y="236" width="845" height="807" key="find.popup/0.0.2048.1280@0.0.2048.1280" timestamp="1585482394318" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.c</url>
+          <line>21</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/game_init.c</url>
+          <line>32</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/game_init.c</url>
+          <line>18</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

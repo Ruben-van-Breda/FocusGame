@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/game_init.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+game_init.h
+/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/game_init.h
+
+/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/game_init.h
+

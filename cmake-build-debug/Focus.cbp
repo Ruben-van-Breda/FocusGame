@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Focus"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Focus">
+				<Option output="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/cmake-build-debug/Focus" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 Focus"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Focus/fast">
+				<Option output="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/cmake-build-debug/Focus" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 Focus/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/rubenvanbreda/OneDrive/UCD/Software\ Engineering\ Project/Focus/Focus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/game_init.c">
+			<Option target="Focus"/>
+		</Unit>
+		<Unit filename="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/game_init.h">
+			<Option target="Focus"/>
+		</Unit>
+		<Unit filename="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/input_output.c">
+			<Option target="Focus"/>
+		</Unit>
+		<Unit filename="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/input_output.h">
+			<Option target="Focus"/>
+		</Unit>
+		<Unit filename="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/main.c">
+			<Option target="Focus"/>
+		</Unit>
+		<Unit filename="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
