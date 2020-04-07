@@ -52,7 +52,8 @@ struct square * pushStack(struct square *n_square1, struct square *n_square2){
     //Place the new stack on the square
     n_square2->stack = new_stack;
     printStack(n_square1->stack,"square ->");
-
+    //Emtpy the moved square, square1
+    set_empty(n_square1);
     return n_square2;
 
 
