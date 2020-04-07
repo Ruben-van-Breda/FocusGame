@@ -16,10 +16,6 @@ int main() {
     player players[PLAYERS_NUM];
     square board[BOARD_SIZE][BOARD_SIZE];
     initialize_players(players);
-
-
-
-    printf("%s\n",players[0].name);
     initialize_board(board);
     int turn = 0;
     //START GAME

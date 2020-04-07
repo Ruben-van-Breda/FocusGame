@@ -16,27 +16,32 @@
 void initialize_players(player players[PLAYERS_NUM]){
 
     // implement here the functionality to initialize the players
-    char name_input[MAX_CHAR];
-    printf("%s\n",players[0].name);
+
     //: Loop through the players
     for (int i = 0; i < PLAYERS_NUM;  i++) {
-
-        //TODO: Get players name input from user
-
         // Create a string for the players name
-        printf("Please enter player %d' name: ",i);
-        scanf("%s",&name_input);
+        char *name_input = (char*)malloc(sizeof(char)*MAX_CHAR);
+        //Check that the memory was correctly allocated
+        if(name_input==NULL){
+            perror("Error: Memory was not allocated ");
+        }
 
+        //TODO: Get players name as input from user
+        printf("Please enter player %d' name: ",i);
+        scanf("%s",name_input);
+
+        char c; // Char c is to store the current character in the name_input
+        size_t name_len; // name_len is to store the length of the name the user inputted.
+        for (name_len = 1; (c = name_input[name_len-1]) != '\0' && (c = name_input[name_len-1]) != ' '; name_len++); //determine the size of name_input
+        players[i].name = (char*)malloc(sizeof(char)*name_len-1); //Allocate the memory to name
         // Initialise the values of player
         players[i].name = name_input;
-        // Set the color of the player
-        players[i].player_color = i;
-        printf("%s\n",players[i].name);
-
-
+        players[i].player_color = i; // Set the color of the player
 
     }
-    printf("%s\n",players[0].name);
+    // Put some text into the memory
+//        strncpy(players[i].name, name_input,MAX_CHAR);
+
 
 }
 
