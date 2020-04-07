@@ -34,13 +34,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d1a6ca9-418d-4b62-ab35-23f1480a7226" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameLogic.c" beforeDir="false" afterPath="$PROJECT_DIR$/GameLogic.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Focus" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Focus" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-    </list>
+    <list default="true" id="2d1a6ca9-418d-4b62-ab35-23f1480a7226" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -186,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586281381806</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="stacks are working properly with the correct ordering">
+      <created>1586292116079</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1586292116079</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,7 +199,8 @@
     <MESSAGE value="working on the function pushStack which returns a square type" />
     <MESSAGE value="Worked on the function pushStack which returns a square type" />
     <MESSAGE value="stacks are working properly except might be in the wrong order" />
-    <option name="LAST_COMMIT_MESSAGE" value="stacks are working properly except might be in the wrong order" />
+    <MESSAGE value="stacks are working properly with the correct ordering" />
+    <option name="LAST_COMMIT_MESSAGE" value="stacks are working properly with the correct ordering" />
   </component>
   <component name="WindowStateProjectService">
     <state x="624" y="307" key="#Deployment" timestamp="1586281200307">
@@ -217,10 +219,10 @@
       <screen x="0" y="23" width="1360" height="711" />
     </state>
     <state x="506" y="155" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1360.711@0.23.1360.711" timestamp="1585247891140" />
-    <state x="518" y="245" key="CommitChangelistDialog2" timestamp="1586281381698">
+    <state x="518" y="245" key="CommitChangelistDialog2" timestamp="1586292146344">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state x="518" y="245" key="CommitChangelistDialog2/0.0.2048.1280@0.0.2048.1280" timestamp="1586281381698" />
+    <state x="518" y="245" key="CommitChangelistDialog2/0.0.2048.1280@0.0.2048.1280" timestamp="1586292146344" />
     <state x="825" y="564" key="Github.CreateGistDialog" timestamp="1586200473167">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
@@ -257,23 +259,23 @@
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
     <state width="2006" height="360" key="GridCell.Tab.1.right/0.0.2048.1280@0.0.2048.1280" timestamp="1586290866873" />
-    <state x="735" y="364" key="MultipleFileMergeDialog" timestamp="1586281262761">
+    <state x="735" y="364" key="MultipleFileMergeDialog" timestamp="1586292158664">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state x="735" y="364" key="MultipleFileMergeDialog/0.0.2048.1280@0.0.2048.1280" timestamp="1586281262761" />
-    <state x="624" y="368" key="Vcs.Push.Dialog.v2" timestamp="1586281387410">
+    <state x="735" y="364" key="MultipleFileMergeDialog/0.0.2048.1280@0.0.2048.1280" timestamp="1586292158664" />
+    <state x="624" y="368" key="Vcs.Push.Dialog.v2" timestamp="1586292126556">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state x="624" y="368" key="Vcs.Push.Dialog.v2/0.0.2048.1280@0.0.2048.1280" timestamp="1586281387410" />
+    <state x="624" y="368" key="Vcs.Push.Dialog.v2/0.0.2048.1280@0.0.2048.1280" timestamp="1586292126556" />
     <state x="640" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1585574996775">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
     <state x="640" y="380" key="com.intellij.ide.util.TipDialog/0.0.2048.1280@0.0.2048.1280" timestamp="1585574996775" />
     <state x="425" y="234" key="com.intellij.ide.util.TipDialog/0.23.1360.711@0.23.1360.711" timestamp="1585246555157" />
-    <state x="807" y="564" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586281337789">
+    <state x="807" y="564" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586292152551">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state x="807" y="564" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2048.1280@0.0.2048.1280" timestamp="1586281337789" />
+    <state x="807" y="564" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2048.1280@0.0.2048.1280" timestamp="1586292152551" />
     <state x="601" y="236" width="845" height="807" key="find.popup" timestamp="1585482394318">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
