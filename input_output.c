@@ -7,9 +7,9 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "input_output.h"
-
-
+#include "GameBoard.h"
 
 
 /* FUnction to print the board:
@@ -27,8 +27,8 @@ void print_board(square board[BOARD_SIZE][BOARD_SIZE]){
                     printf("|   ");
                 else{
                     if (board[i][j].stack->p_color == GREEN)
-                        printf("| G ");
-                    else printf("| R ");
+                        printf("| G%d",get_stack_count(board[i][j].stack));
+                    else printf("| R%d",get_stack_count(board[i][j].stack));
                 }
             }
             else
@@ -38,7 +38,6 @@ void print_board(square board[BOARD_SIZE][BOARD_SIZE]){
     }
 }
 
-void get_move_input(){
 
-}
+
 

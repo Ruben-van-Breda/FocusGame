@@ -6,6 +6,7 @@
 #include <stdlib.h>
 
 #include "input_output.h"
+#include "GameBoard.h"
 #include <fcntl.h>
 #include <zconf.h>
 #include <wchar.h>
@@ -17,8 +18,12 @@ int main() {
     square board[BOARD_SIZE][BOARD_SIZE];
     initialize_players(players);
     initialize_board(board);
-    int turn = 0;
+
+    printf("count = %d ",get_stack_count(board[1][2].stack));
     //START GAME
+    board[1][2].stack = push(RED,board[1][2].stack);
+
+    printf("count = %d",get_stack_count(board[1][2].stack));
 
     print_board(board);
     return 0;

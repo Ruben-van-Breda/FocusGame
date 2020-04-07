@@ -123,6 +123,33 @@ Focus/fast:
 	$(MAKE) -f CMakeFiles/Focus.dir/build.make CMakeFiles/Focus.dir/build
 .PHONY : Focus/fast
 
+GameBoard.o: GameBoard.c.o
+
+.PHONY : GameBoard.o
+
+# target to build an object file
+GameBoard.c.o:
+	$(MAKE) -f CMakeFiles/Focus.dir/build.make CMakeFiles/Focus.dir/GameBoard.c.o
+.PHONY : GameBoard.c.o
+
+GameBoard.i: GameBoard.c.i
+
+.PHONY : GameBoard.i
+
+# target to preprocess a source file
+GameBoard.c.i:
+	$(MAKE) -f CMakeFiles/Focus.dir/build.make CMakeFiles/Focus.dir/GameBoard.c.i
+.PHONY : GameBoard.c.i
+
+GameBoard.s: GameBoard.c.s
+
+.PHONY : GameBoard.s
+
+# target to generate assembly for a file
+GameBoard.c.s:
+	$(MAKE) -f CMakeFiles/Focus.dir/build.make CMakeFiles/Focus.dir/GameBoard.c.s
+.PHONY : GameBoard.c.s
+
 game_init.o: game_init.c.o
 
 .PHONY : game_init.o
@@ -213,6 +240,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Focus"
+	@echo "... GameBoard.o"
+	@echo "... GameBoard.i"
+	@echo "... GameBoard.s"
 	@echo "... game_init.o"
 	@echo "... game_init.i"
 	@echo "... game_init.s"

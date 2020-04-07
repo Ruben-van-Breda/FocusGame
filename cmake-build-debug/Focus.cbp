@@ -76,6 +76,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/GameBoard.c">
+			<Option target="Focus"/>
+		</Unit>
+		<Unit filename="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/GameBoard.h">
+			<Option target="Focus"/>
+		</Unit>
 		<Unit filename="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/game_init.c">
 			<Option target="Focus"/>
 		</Unit>

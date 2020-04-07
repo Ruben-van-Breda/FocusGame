@@ -8,6 +8,7 @@
 #endif //FOCUS_GAME_INIT_H
 
 
+
 #define BOARD_SIZE 8
 #define PLAYERS_NUM 2
 
