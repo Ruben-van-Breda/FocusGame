@@ -16,20 +16,27 @@ struct piece * push(color n_color,struct piece *top){
     return top;
 }
 
-struct piece * pushStack(struct piece *stack1,struct piece *stack2){
+struct square * pushStack(struct square *stack1,struct square *stack2){
     // This function stacks top2 on top of stack top1
-    piece *curr_top1 = stack1;
-    stack1 = malloc(sizeof(piece));
+    piece *s1 = stack1->stack;
+    stack1->stack = malloc(sizeof(struct piece));
 
-    //Find the last element of stack2
-    while(stack1->next != NULL){
-        stack1 = stack1->next;
-
+    //Find the last element of stack1
+    if( s1 != NULL && s1->next == NULL){
+        printf("\nget_stack_count == 1\n");
+        s1->next = stack2->stack;
+        stack1->stack = s1;
+        return stack1;
     }
-    stack1->next = stack2;
-    curr_top1->next = stack2;
-
+    while(s1->next != NULL){
+        s1 = s1->next;
+    }
+    s1->next = stack2->stack;
+    stack1->stack->next = s1;
+    //Remove all the pieces from the square2
+    set_empty(stack2);
     return stack1;
+
 
 }
 int get_stack_count(piece *n_stack){

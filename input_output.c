@@ -43,13 +43,15 @@ void printStack(struct piece *stack){
 
     //There is only one piece in the stack
     if(stack!=NULL && stack->next == NULL){
-        printf("%d",stack->p_color);
+        printf("%d\n",stack->p_color);
+        return;
     }
 
     while(stack->next != NULL){
         printf("%d",stack->p_color);
         stack = stack->next;
     }
+    printf("%d",stack->p_color);
 
     printf("\n");
 
