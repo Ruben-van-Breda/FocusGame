@@ -123,32 +123,32 @@ Focus/fast:
 	$(MAKE) -f CMakeFiles/Focus.dir/build.make CMakeFiles/Focus.dir/build
 .PHONY : Focus/fast
 
-GameBoard.o: GameBoard.c.o
+GameLogic.o: GameLogic.c.o
 
-.PHONY : GameBoard.o
+.PHONY : GameLogic.o
 
 # target to build an object file
-GameBoard.c.o:
-	$(MAKE) -f CMakeFiles/Focus.dir/build.make CMakeFiles/Focus.dir/GameBoard.c.o
-.PHONY : GameBoard.c.o
+GameLogic.c.o:
+	$(MAKE) -f CMakeFiles/Focus.dir/build.make CMakeFiles/Focus.dir/GameLogic.c.o
+.PHONY : GameLogic.c.o
 
-GameBoard.i: GameBoard.c.i
+GameLogic.i: GameLogic.c.i
 
-.PHONY : GameBoard.i
+.PHONY : GameLogic.i
 
 # target to preprocess a source file
-GameBoard.c.i:
-	$(MAKE) -f CMakeFiles/Focus.dir/build.make CMakeFiles/Focus.dir/GameBoard.c.i
-.PHONY : GameBoard.c.i
+GameLogic.c.i:
+	$(MAKE) -f CMakeFiles/Focus.dir/build.make CMakeFiles/Focus.dir/GameLogic.c.i
+.PHONY : GameLogic.c.i
 
-GameBoard.s: GameBoard.c.s
+GameLogic.s: GameLogic.c.s
 
-.PHONY : GameBoard.s
+.PHONY : GameLogic.s
 
 # target to generate assembly for a file
-GameBoard.c.s:
-	$(MAKE) -f CMakeFiles/Focus.dir/build.make CMakeFiles/Focus.dir/GameBoard.c.s
-.PHONY : GameBoard.c.s
+GameLogic.c.s:
+	$(MAKE) -f CMakeFiles/Focus.dir/build.make CMakeFiles/Focus.dir/GameLogic.c.s
+.PHONY : GameLogic.c.s
 
 game_init.o: game_init.c.o
 
@@ -240,9 +240,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Focus"
-	@echo "... GameBoard.o"
-	@echo "... GameBoard.i"
-	@echo "... GameBoard.s"
+	@echo "... GameLogic.o"
+	@echo "... GameLogic.i"
+	@echo "... GameLogic.s"
 	@echo "... game_init.o"
 	@echo "... game_init.i"
 	@echo "... game_init.s"

@@ -35,27 +35,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a95c042f-4f5e-44cd-99c0-4463cc2710eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/GameBoard.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameBoard.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameBoard.c" beforeDir="false" afterPath="$PROJECT_DIR$/GameLogic.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameBoard.h" beforeDir="false" afterPath="$PROJECT_DIR$/GameLogic.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/C.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/DependInfo.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/game_init.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/game_init.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/input_output.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/input_output.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/link.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Focus" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Focus" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Focus.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Focus.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_init.h" beforeDir="false" afterPath="$PROJECT_DIR$/game_init.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input_output.c" beforeDir="false" afterPath="$PROJECT_DIR$/input_output.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input_output.h" beforeDir="false" afterPath="$PROJECT_DIR$/input_output.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
@@ -132,7 +127,7 @@
       <workItem from="1585246556157" duration="1349000" />
       <workItem from="1585309263184" duration="10327000" />
       <workItem from="1585574982393" duration="13219000" />
-      <workItem from="1586260855280" duration="1855000" />
+      <workItem from="1586260855280" duration="6384000" />
     </task>
     <task id="LOCAL-00001" summary="Finished player initialisation">
       <created>1586256361749</created>
@@ -162,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586256568020</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Finished player initialisation">
+      <created>1586263293247</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1586263293247</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,50 +187,50 @@
       <screen x="0" y="23" width="1360" height="711" />
     </state>
     <state x="506" y="155" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1360.711@0.23.1360.711" timestamp="1585247891140" />
-    <state x="518" y="245" key="CommitChangelistDialog2" timestamp="1586256567919">
+    <state x="518" y="245" key="CommitChangelistDialog2" timestamp="1586268690979">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state x="518" y="245" key="CommitChangelistDialog2/0.0.2048.1280@0.0.2048.1280" timestamp="1586256567919" />
+    <state x="518" y="245" key="CommitChangelistDialog2/0.0.2048.1280@0.0.2048.1280" timestamp="1586268690979" />
     <state x="825" y="564" key="Github.CreateGistDialog" timestamp="1586200473167">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
     <state x="825" y="564" key="Github.CreateGistDialog/0.0.2048.1280@0.0.2048.1280" timestamp="1586200473167" />
-    <state width="2006" height="370" key="GridCell.Tab.0.bottom" timestamp="1586263173766">
+    <state width="2006" height="370" key="GridCell.Tab.0.bottom" timestamp="1586268691025">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="2006" height="370" key="GridCell.Tab.0.bottom/0.0.2048.1280@0.0.2048.1280" timestamp="1586263173766" />
-    <state width="2006" height="370" key="GridCell.Tab.0.center" timestamp="1586263173765">
+    <state width="2006" height="370" key="GridCell.Tab.0.bottom/0.0.2048.1280@0.0.2048.1280" timestamp="1586268691025" />
+    <state width="2006" height="370" key="GridCell.Tab.0.center" timestamp="1586268691024">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="2006" height="370" key="GridCell.Tab.0.center/0.0.2048.1280@0.0.2048.1280" timestamp="1586263173765" />
-    <state width="2006" height="370" key="GridCell.Tab.0.left" timestamp="1586263173764">
+    <state width="2006" height="370" key="GridCell.Tab.0.center/0.0.2048.1280@0.0.2048.1280" timestamp="1586268691024" />
+    <state width="2006" height="370" key="GridCell.Tab.0.left" timestamp="1586268691023">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="2006" height="370" key="GridCell.Tab.0.left/0.0.2048.1280@0.0.2048.1280" timestamp="1586263173764" />
-    <state width="2006" height="370" key="GridCell.Tab.0.right" timestamp="1586263173765">
+    <state width="2006" height="370" key="GridCell.Tab.0.left/0.0.2048.1280@0.0.2048.1280" timestamp="1586268691023" />
+    <state width="2006" height="370" key="GridCell.Tab.0.right" timestamp="1586268691024">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="2006" height="370" key="GridCell.Tab.0.right/0.0.2048.1280@0.0.2048.1280" timestamp="1586263173765" />
-    <state width="2006" height="360" key="GridCell.Tab.1.bottom" timestamp="1586252790058">
+    <state width="2006" height="370" key="GridCell.Tab.0.right/0.0.2048.1280@0.0.2048.1280" timestamp="1586268691024" />
+    <state width="2006" height="360" key="GridCell.Tab.1.bottom" timestamp="1586264834920">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="2006" height="360" key="GridCell.Tab.1.bottom/0.0.2048.1280@0.0.2048.1280" timestamp="1586252790058" />
-    <state width="2006" height="360" key="GridCell.Tab.1.center" timestamp="1586252790057">
+    <state width="2006" height="360" key="GridCell.Tab.1.bottom/0.0.2048.1280@0.0.2048.1280" timestamp="1586264834920" />
+    <state width="2006" height="360" key="GridCell.Tab.1.center" timestamp="1586264834919">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="2006" height="360" key="GridCell.Tab.1.center/0.0.2048.1280@0.0.2048.1280" timestamp="1586252790057" />
-    <state width="2006" height="360" key="GridCell.Tab.1.left" timestamp="1586252790056">
+    <state width="2006" height="360" key="GridCell.Tab.1.center/0.0.2048.1280@0.0.2048.1280" timestamp="1586264834919" />
+    <state width="2006" height="360" key="GridCell.Tab.1.left" timestamp="1586264834919">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="2006" height="360" key="GridCell.Tab.1.left/0.0.2048.1280@0.0.2048.1280" timestamp="1586252790056" />
-    <state width="2006" height="360" key="GridCell.Tab.1.right" timestamp="1586252790057">
+    <state width="2006" height="360" key="GridCell.Tab.1.left/0.0.2048.1280@0.0.2048.1280" timestamp="1586264834919" />
+    <state width="2006" height="360" key="GridCell.Tab.1.right" timestamp="1586264834920">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="2006" height="360" key="GridCell.Tab.1.right/0.0.2048.1280@0.0.2048.1280" timestamp="1586252790057" />
-    <state x="624" y="368" key="Vcs.Push.Dialog.v2" timestamp="1586256580045">
+    <state width="2006" height="360" key="GridCell.Tab.1.right/0.0.2048.1280@0.0.2048.1280" timestamp="1586264834920" />
+    <state x="624" y="368" key="Vcs.Push.Dialog.v2" timestamp="1586263306877">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state x="624" y="368" key="Vcs.Push.Dialog.v2/0.0.2048.1280@0.0.2048.1280" timestamp="1586256580045" />
+    <state x="624" y="368" key="Vcs.Push.Dialog.v2/0.0.2048.1280@0.0.2048.1280" timestamp="1586263306877" />
     <state x="640" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1585574996775">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>

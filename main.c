@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 #include "input_output.h"
-#include "GameBoard.h"
+#include "GameLogic.h"
 #include <fcntl.h>
 #include <zconf.h>
 #include <wchar.h>
@@ -19,11 +19,30 @@ int main() {
     initialize_players(players);
     initialize_board(board);
 
-    printf("count = %d ",get_stack_count(board[1][2].stack));
+    print_board(board);
+
+
     //START GAME
     board[1][2].stack = push(RED,board[1][2].stack);
+    board[1][2].stack = push(GREEN,board[1][2].stack);
+    board[1][2].stack = push(GREEN,board[1][2].stack);
+    board[1][3].stack = push(GREEN,board[1][3].stack);
+    board[1][3].stack = push(RED,board[1][3].stack);
 
-    printf("count = %d",get_stack_count(board[1][2].stack));
+    print_board(board);
+
+
+    printf("[1][2] ");
+    printStack(board[1][2].stack);
+    printf("[1][3] ");
+    printStack(board[1][3].stack);
+
+    board[1][3].stack = pushStack( board[1][3].stack, board[1][2].stack);
+    printf("[1][3] ");
+    printStack(board[1][3].stack);
+
+
+
 
     print_board(board);
     return 0;

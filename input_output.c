@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "input_output.h"
-#include "GameBoard.h"
+#include "GameLogic.h"
 
 
 /* FUnction to print the board:
@@ -36,6 +36,23 @@ void print_board(square board[BOARD_SIZE][BOARD_SIZE]){
         }
         printf("|\n");
     }
+}
+
+void printStack(struct piece *stack){
+    printf("Stack -> ");
+
+    //There is only one piece in the stack
+    if(stack!=NULL && stack->next == NULL){
+        printf("%d",stack->p_color);
+    }
+
+    while(stack->next != NULL){
+        printf("%d",stack->p_color);
+        stack = stack->next;
+    }
+
+    printf("\n");
+
 }
 
 

@@ -96,25 +96,25 @@ CMakeFiles/Focus.dir/game_init.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Focus.dir/game_init.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/game_init.c" -o CMakeFiles/Focus.dir/game_init.c.s
 
-CMakeFiles/Focus.dir/GameBoard.c.o: CMakeFiles/Focus.dir/flags.make
-CMakeFiles/Focus.dir/GameBoard.c.o: ../GameBoard.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Focus.dir/GameBoard.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Focus.dir/GameBoard.c.o   -c "/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/GameBoard.c"
+CMakeFiles/Focus.dir/GameLogic.c.o: CMakeFiles/Focus.dir/flags.make
+CMakeFiles/Focus.dir/GameLogic.c.o: ../GameLogic.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Focus.dir/GameLogic.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Focus.dir/GameLogic.c.o   -c "/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/GameLogic.c"
 
-CMakeFiles/Focus.dir/GameBoard.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Focus.dir/GameBoard.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/GameBoard.c" > CMakeFiles/Focus.dir/GameBoard.c.i
+CMakeFiles/Focus.dir/GameLogic.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Focus.dir/GameLogic.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/GameLogic.c" > CMakeFiles/Focus.dir/GameLogic.c.i
 
-CMakeFiles/Focus.dir/GameBoard.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Focus.dir/GameBoard.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/GameBoard.c" -o CMakeFiles/Focus.dir/GameBoard.c.s
+CMakeFiles/Focus.dir/GameLogic.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Focus.dir/GameLogic.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/GameLogic.c" -o CMakeFiles/Focus.dir/GameLogic.c.s
 
 # Object files for target Focus
 Focus_OBJECTS = \
 "CMakeFiles/Focus.dir/main.c.o" \
 "CMakeFiles/Focus.dir/input_output.c.o" \
 "CMakeFiles/Focus.dir/game_init.c.o" \
-"CMakeFiles/Focus.dir/GameBoard.c.o"
+"CMakeFiles/Focus.dir/GameLogic.c.o"
 
 # External object files for target Focus
 Focus_EXTERNAL_OBJECTS =
@@ -122,7 +122,7 @@ Focus_EXTERNAL_OBJECTS =
 Focus: CMakeFiles/Focus.dir/main.c.o
 Focus: CMakeFiles/Focus.dir/input_output.c.o
 Focus: CMakeFiles/Focus.dir/game_init.c.o
-Focus: CMakeFiles/Focus.dir/GameBoard.c.o
+Focus: CMakeFiles/Focus.dir/GameLogic.c.o
 Focus: CMakeFiles/Focus.dir/build.make
 Focus: CMakeFiles/Focus.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable Focus"
