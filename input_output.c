@@ -38,8 +38,8 @@ void print_board(square board[BOARD_SIZE][BOARD_SIZE]){
     }
 }
 
-void printStack(struct piece *stack){
-    printf("Stack -> ");
+void printStack(struct piece *stack,char *string){
+    printf("%s ",string);
 
     //There is only one piece in the stack
     if(stack!=NULL && stack->next == NULL){

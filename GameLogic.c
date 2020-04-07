@@ -16,26 +16,58 @@ struct piece * push(color n_color,struct piece *top){
     return top;
 }
 
-struct square * pushStack(struct square *stack1,struct square *stack2){
+struct square * pushStack(struct square *n_square1, struct square *n_square2){
     // This function stacks top2 on top of stack top1
-    piece *s1 = stack1->stack;
-    stack1->stack = malloc(sizeof(struct piece));
+    /*piece *s1 = n_square1->stack;
 
-    //Find the last element of stack1
+    //Find the last element of n_square1
     if( s1 != NULL && s1->next == NULL){
         printf("\nget_stack_count == 1\n");
-        s1->next = stack2->stack;
-        stack1->stack = s1;
-        return stack1;
+        s1->next = n_square2->stack;
+        n_square1->stack = s1;
+        return n_square1;
     }
     while(s1->next != NULL){
         s1 = s1->next;
     }
-    s1->next = stack2->stack;
-    stack1->stack->next = s1;
+    s1->next = n_square2->stack;
+    n_square1->stack->next = s1;
     //Remove all the pieces from the square2
-    set_empty(stack2);
-    return stack1;
+    set_empty(n_square2);
+    return n_square1;*/
+
+    int ns_size = get_stack_count(n_square1->stack) + get_stack_count(n_square2->stack); // new stack size
+    piece *new_stack = (piece *)malloc(sizeof(piece)*ns_size);
+    piece *stack1 = (piece *)malloc(sizeof(piece)*get_stack_count(n_square1->stack));
+    stack1 = n_square1->stack;
+    piece *stack2 = (piece *)malloc(sizeof(piece)*get_stack_count(n_square2->stack));
+//    n_square1->stack = (piece *)calloc(sizeof(piece),ns_size);
+
+
+    //set the new_stack = square2 stack
+    new_stack = n_square2->stack;
+
+    while (stack2->next != NULL){
+        new_stack->next = stack2;
+        stack2 = stack2->next;
+    }
+    printStack(new_stack,"new_stack ->");
+
+
+    while (stack1->next != NULL){
+        new_stack = push(stack1->p_color,new_stack);
+        printStack(new_stack,"in ns -> ");
+        stack1 = stack1->next;
+    }
+    new_stack = push(stack1->p_color,new_stack);
+
+    printStack(new_stack,"new_stack ->");
+
+    n_square1->stack = new_stack;
+    printStack(n_square1->stack,"square ->");
+
+
+    return n_square1;
 
 
 }

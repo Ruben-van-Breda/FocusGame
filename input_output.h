@@ -13,6 +13,6 @@
 
 //Function to print the board
 void print_board(square board[BOARD_SIZE][BOARD_SIZE]);
-void printStack(struct piece *stack);
+void printStack(struct piece *stack,char *string);
 
 
