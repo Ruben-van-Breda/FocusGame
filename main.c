@@ -24,10 +24,8 @@ int main() {
 
     //START GAME
     board[1][2].stack = push(GREEN,board[1][2].stack);
-    board[1][2].stack = push(RED,board[1][2].stack);
 //    board[1][2].stack = push(GREEN,board[1][2].stack);
 //    board[1][3].stack = push(GREEN,board[1][3].stack);
-    board[1][3].stack = push(GREEN,board[1][3].stack);
     board[1][3].stack = push(GREEN,board[1][3].stack);
 
     print_board(board);
@@ -35,8 +33,8 @@ int main() {
 
     printStack(board[1][2].stack,"Stack[1][2]->");
     printStack(board[1][3].stack,"Stack[1][3]->");
-
-    board[1][3] = *pushStack( &board[1][3], &board[1][2]);
+    //Push the stack of stack1 onto stack2
+    board[1][3] = *pushStack( &board[1][2], &board[1][3]);
     printStack(board[1][3].stack,"Stack[1][3]->");
     printf("get_stack_count [1][3] = %d",get_stack_count(board[1][3].stack));
 
