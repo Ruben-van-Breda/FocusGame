@@ -73,9 +73,9 @@ int get_stack_count(piece *n_stack){
 void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE],player n_player){
 
     Move move;
-    printf("What square would you like to move: ");
+    printf("%s, what square would you like to move: ",n_player.name);
     scanf("%d %d",&move.x1,&move.y1);
-    printf("What square would you like to move to: ");
+    printf("%s what square would you like to move to: ",n_player.name);
     scanf("%d %d",&move.x2,&move.y2);
     int move_counts = get_stack_count(board[move.x1][move.y1].stack);
 

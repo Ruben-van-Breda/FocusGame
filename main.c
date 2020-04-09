@@ -28,21 +28,27 @@ int main() {
 
 
     int gameState = 0; // gameState represents the game phase 0 - in game/start game, 1-end game
+    int num_of_rounds = 0;
+
     //TODO: Start game loop
-    while (gameState==0){
+    while (gameState==0 || num_of_rounds == 3){
+        //TODO: NEXT PLAYERS TURN
+        int turn = num_of_rounds % PLAYERS_NUM;
+
         //Display Instructions
-//        print_board(board);
 //        display_instructions(0);
-        MakeMove(board,players[0]);
+        //TODO: MAKE MOVE
+        MakeMove(board,players[turn]);
+        print_board(board);
+//        int win = check_win(board);
+        num_of_rounds++;
 
 
         //TODO: ASK USER FOR MOVE
-        //TODO: MAKE MOVE
         //TODO: FOLLOW UP ON MOVE (IF NEEDED)
         //TODO: CHECK WIN
-        gameState = 1;
+//        gameState = 1;
 
-        //TODO: NEXT PLAYERS TURN
 
     }
 

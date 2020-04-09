@@ -99,7 +99,7 @@ int display_instructions(int type){
             printf("What would you like to do ******  ?");
             break;
     }
-
+    return 0;
 }
 
 

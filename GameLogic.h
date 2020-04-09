@@ -19,6 +19,7 @@ int get_stack_count(piece *n_stack);
 struct piece * push(color n_color,struct piece *top);
 struct square * pushStack(struct square *n_square1, struct square *n_square2);
 void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE],player n_player);
+int check_win(square board[BOARD_SIZE][BOARD_SIZE]);
 
 
 
