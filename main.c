@@ -12,6 +12,7 @@
 #include <wchar.h>
 
 int main() {
+    //TODO: Defensive programming and edge cases
 
     // declaration of the players and the board
     player players[PLAYERS_NUM];
@@ -21,27 +22,35 @@ int main() {
 
     print_board(board);
 
-
-    //START GAME
-    board[1][2].stack = push(GREEN,board[1][2].stack);
-//    board[1][2].stack = push(RED,board[1][2].stack);
-//    board[1][2].stack = push(RED,board[1][2].stack);
+//    board[1][3] = *pushStack( &board[1][2], &board[1][3]);
+//    printf("Size of [1][3] -> %d\n",get_stack_count(&board[1][3]));
+//    print_board(board);
 
 
-//    board[1][2].stack = push(GREEN,board[1][2].stack);
-//    board[1][3].stack = push(GREEN,board[1][3].stack);
-    board[1][3].stack = push(GREEN,board[1][3].stack);
+    int gameState = 0; // gameState represents the game phase 0 - in game/start game, 1-end game
+    //TODO: Start game loop
+    while (gameState==0){
+        //Display Instructions
+//        print_board(board);
+//        display_instructions(0);
+        MakeMove(board,players[0]);
+
+
+        //TODO: ASK USER FOR MOVE
+        //TODO: MAKE MOVE
+        //TODO: FOLLOW UP ON MOVE (IF NEEDED)
+        //TODO: CHECK WIN
+        gameState = 1;
+
+        //TODO: NEXT PLAYERS TURN
+
+    }
+
+
 
     print_board(board);
 
 
-    printStack(board[1][2].stack,"Stack[1][2]->");
-    printStack(board[1][3].stack,"Stack[1][3]->");
-    //Push the stack of stack1 onto stack2
-    board[1][3] = *pushStack( &board[1][2], &board[1][3]);
-
-    printStack(board[1][3].stack,"Stack[1][3]->");
-    printf("get_stack_count [1][3] = %d",get_stack_count(board[1][3].stack));
 
 
 
@@ -49,8 +58,4 @@ int main() {
     print_board(board);
     return 0;
 }
-//
-//void GUI(){
-////    setmode(STDOUT_FILENO);
-//    wprintf(L"\x043a");
-//}
+

@@ -9,9 +9,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <wchar.h>
+#include <locale.h>
 #include "game_init.h"
 
 #define MAX_CHAR 20
+#define UI_PLAYER1
 
 void initialize_players(player players[PLAYERS_NUM]){
 
@@ -27,7 +30,7 @@ void initialize_players(player players[PLAYERS_NUM]){
         }
 
         //TODO: Get players name as input from user
-        printf("Please enter player %d' name: ",i);
+        printf("Please enter player %d' name: ",i+1);
         scanf("%s",name_input);
 
         char c; // Char c is to store the current character in the name_input
@@ -39,9 +42,16 @@ void initialize_players(player players[PLAYERS_NUM]){
         players[i].player_color = i; // Set the color of the player
 
     }
-    // Put some text into the memory
-//        strncpy(players[i].name, name_input,MAX_CHAR);
+    //Display the players colours to user
+    printf("--- Players Key ---\n");
+    setlocale(LC_CTYPE, "");
+    wchar_t ui_empty = UI_EMPTY_CODE;
+    wchar_t ui_invalid = UI_INVALID_CODE;
+    wchar_t ui_p1 = UI_PLAYER1_CODE;
+    wchar_t ui_p2 = UI_PLAYER2_CODE;
 
+    wprintf(ANSI_COLOR_RED L"empty square %lc\n%s", ui_empty ,ANSI_COLOR_RESET);
+    for (int j = 0; j < PLAYERS_NUM; ++j) {wprintf(L"%s is %s %lc\n",players[j].name,(players[j].player_color?"green":"red"), (players[j].player_color?ui_p1:ui_p2));}
 
 }
 
@@ -76,6 +86,7 @@ s->stack->p_color = RED;
 s->stack->next = NULL;
 s->num_pieces = 1;
 }
+
 
 //initializes the board
 void initialize_board(square board [BOARD_SIZE][BOARD_SIZE]){

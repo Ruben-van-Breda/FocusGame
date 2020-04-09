@@ -12,10 +12,25 @@
 #define BOARD_SIZE 8
 #define PLAYERS_NUM 2
 
+#define UI_PLAYER1_CODE 0x25A7
+#define UI_PLAYER2_CODE 0x25A0
+#define UI_EMPTY_CODE 0x25A2
+#define UI_INVALID_CODE 0x25A6
+
+// UNICODE COLORS
+#define ANSI_COLOR_RED     "\x1b[31m"
+#define ANSI_COLOR_GREEN   "\x1b[32m"
+#define ANSI_COLOR_YELLOW  "\x1b[33m"
+#define ANSI_COLOR_BLUE    "\x1b[34m"
+#define ANSI_COLOR_MAGENTA "\x1b[35m"
+#define ANSI_COLOR_CYAN    "\x1b[36m"
+#define ANSI_COLOR_RESET   "\x1b[0m"
+
 //colors that a piece can have
 typedef enum color {
     RED,
-    GREEN
+    GREEN,
+    SELECTION
 }color;
 
 // Square types

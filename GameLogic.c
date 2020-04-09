@@ -33,8 +33,6 @@ struct square * pushStack(struct square *n_square1, struct square *n_square2){
     //set the new_stackPtr = square1 stack
     new_stackPtr = n_square1->stack;
     piece *currentPiece = new_stackPtr;
-//    printStack(new_stackPtr, "new_stackPtr ->");
-//
     //loop through and assign the elements of stack1 to the variable new_stackPtr
     while (new_stackPtr->next != NULL){
         new_stackPtr = new_stackPtr->next;
@@ -43,6 +41,8 @@ struct square * pushStack(struct square *n_square1, struct square *n_square2){
     new_stackPtr->next = stack2; //add the next pointer to point to secondStack
 
     //Place the new stack on the square
+    printStack(currentPiece, "currentStack ->");
+
     n_square2->stack = currentPiece;
     // '' This is needed to add the last piece of the stack to square2
     n_square2->stack = push(currentPiece->p_color, n_square2->stack);
@@ -55,18 +55,50 @@ struct square * pushStack(struct square *n_square1, struct square *n_square2){
 }
 int get_stack_count(piece *n_stack){
     //This function returns the amount of pieces in a stack n_stack
-    int count = 1;
+    int count = 0;
     while(n_stack->next != NULL){
         n_stack = n_stack->next;
         count++;
 
     }
 //    //Check if there is a piece but next is null(count=0)
-//    if(n_stack!=NULL && count==0){
-//        count++;
-//    }
+    if(n_stack!=NULL && count==0){
+        count++;
+    }
 
 
     return count;
+}
+
+void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE],player n_player){
+
+    Move move;
+    printf("What square would you like to move: ");
+    scanf("%d %d",&move.x1,&move.y1);
+    printf("What square would you like to move to: ");
+    scanf("%d %d",&move.x2,&move.y2);
+    int move_counts = get_stack_count(board[move.x1][move.y1].stack);
+
+
+    /*  Preform the move */
+    // Check stack not bigger than 5
+
+    board[move.x2][move.y2] = *pushStack(&board[move.x1][move.y1],&board[move.x1][move.y2]);
+
+
+
+
+
+
+
+//    board[move.x1][move.y1].type = INVALID;
+    //TODO: Check that the player can move there
+    //The square is a valid selection
+//    if(board[move.x1][move.y1].stack->p_color == n_player.player_color){
+//        int move_counts = get_stack_count(board[move.x1][move.y1].stack);
+//        printf("Enter %d moves (u,d,l,r): ",move_counts);
+//    }
+
+
 }
 
