@@ -13,7 +13,6 @@
 void print_board(square board[BOARD_SIZE][BOARD_SIZE]);
 void printStack(struct piece *stack,char *string);
 int display_instructions(int type);
-void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE],player n_player);
 
 
 

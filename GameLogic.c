@@ -19,7 +19,7 @@ struct piece * push(color n_color,struct piece *top){
 
 struct square * pushStack(struct square *n_square1, struct square *n_square2){
     // This function stacks top2 on top of stack top1
-
+    //TODO: BUG Move 1 1 -> 2 1 . BOOM NO WORKY NO MORE
 
     int ns_size = get_stack_count(n_square1->stack) + get_stack_count(n_square2->stack); // new stack size
     piece *new_stackPtr = (piece *)malloc(sizeof(piece) * ns_size);
@@ -41,11 +41,15 @@ struct square * pushStack(struct square *n_square1, struct square *n_square2){
     new_stackPtr->next = stack2; //add the next pointer to point to secondStack
 
     //Place the new stack on the square
-    printStack(currentPiece, "currentStack ->");
+//    printStack(currentPiece, "currentStack ->");
 
-    n_square2->stack = currentPiece;
+    n_square2->stack = new_stackPtr;
     // '' This is needed to add the last piece of the stack to square2
-    n_square2->stack = push(currentPiece->p_color, n_square2->stack);
+    if(get_stack_count(n_square2->stack) < ns_size){
+            n_square2->stack = push(currentPiece->p_color, n_square2->stack);
+            printf("ADDED CURRENT PIECE\n");
+
+    }
 
     //Emtpy the moved square, square1
     set_empty(n_square1);
@@ -56,13 +60,13 @@ struct square * pushStack(struct square *n_square1, struct square *n_square2){
 int get_stack_count(piece *n_stack){
     //This function returns the amount of pieces in a stack n_stack
     int count = 0;
-    while(n_stack->next != NULL){
+    while(n_stack != NULL){
         n_stack = n_stack->next;
         count++;
 
     }
 //    //Check if there is a piece but next is null(count=0)
-    if(n_stack!=NULL && count==0){
+    if(n_stack!=NULL && n_stack->next == NULL){
         count++;
     }
 
@@ -77,14 +81,19 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE],player n_player){
     scanf("%d %d",&move.x1,&move.y1);
     printf("%s what square would you like to move to: ",n_player.name);
     scanf("%d %d",&move.x2,&move.y2);
+//    printStack(board[move.x1][move.y1].stack,"MAKE MOVE 1");
+//    printStack(board[move.x2][move.y2].stack,"MAKE MOVE 2");
+
+
+
     int move_counts = get_stack_count(board[move.x1][move.y1].stack);
 
 
     /*  Preform the move */
     // Check stack not bigger than 5
 
-    board[move.x2][move.y2] = *pushStack(&board[move.x1][move.y1],&board[move.x1][move.y2]);
-
+    board[move.x2][move.y2] = *pushStack(&board[move.x1][move.y1],&board[move.x2][move.y2]);
+//    printStack( board[move.x2][move.y2].stack, "new square");
 
 
 
