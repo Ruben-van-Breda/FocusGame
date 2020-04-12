@@ -6,6 +6,7 @@
 #include "input_output.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 
 struct piece * push(color n_color,struct piece *top){
@@ -75,15 +76,26 @@ int get_stack_count(piece *n_stack){
 }
 
 void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE],player n_player){
-
+    bool isValidChoice = true; //checks that the player can move in a valid square
     Move move;
+    // Get move
     printf("%s, what square would you like to move: ",n_player.name);
-    scanf("%d %d",&move.x1,&move.y1);
-    printf("%s what square would you like to move to: ",n_player.name);
-    scanf("%d %d",&move.x2,&move.y2);
-//    printStack(board[move.x1][move.y1].stack,"MAKE MOVE 1");
-//    printStack(board[move.x2][move.y2].stack,"MAKE MOVE 2");
-
+    int tempX,tempY;
+    int sc_result = scanf("%d %d",&tempX,&tempY);
+    while(sc_result != 2){
+        printf("Invalid what square would you like to move (row col): ");
+        getchar();
+        sc_result = scanf("%d %d",&tempX,&tempY);
+    }
+    move.x1 = tempX; move.y1 = tempY;
+    printf("%s, what square would you like to move to: ",n_player.name);
+    sc_result = scanf("%d %d",&tempX,&tempY);
+    while(sc_result != 2){
+        printf("Invalid. what square would you like to move to(row col): ");
+        getchar();
+        sc_result = scanf("%d %d",&tempX,&tempY);
+    }
+    move.x2 = tempX; move.y2 = tempY;
 
 
     int move_counts = get_stack_count(board[move.x1][move.y1].stack);
