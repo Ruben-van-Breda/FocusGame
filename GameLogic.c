@@ -76,27 +76,48 @@ int get_stack_count(piece *n_stack){
 }
 
 void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE],player n_player){
-    bool isValidChoice = true; //checks that the player can move in a valid square
+    bool isValidChoice = false; //checks that the player can move in a valid square
     Move move;
     // Get move
-    printf("%s, what square would you like to move: ",n_player.name);
-    int tempX,tempY;
-    int sc_result = scanf("%d %d",&tempX,&tempY);
-    while(sc_result != 2){
-        printf("Invalid what square would you like to move (row col): ");
+    int tempX,tempY,sc_result; //store temporary x,y values and sc_result to check if the input is correct
+    while(isValidChoice == false){
         getchar();
+        printf("%s, which square would you like to move: ",n_player.name);
         sc_result = scanf("%d %d",&tempX,&tempY);
+        if(sc_result != 2){
+            printf("invalid which square would you like to move: ",n_player.name);
+            continue;
+        }
+        /* Check the a valid conditions and display the appropriate message if necessary*/
+        if(tempX > BOARD_SIZE || tempX < 0 || tempY > BOARD_SIZE || tempY < 0){ printf("Move out of range,\n"); continue;}
+        if(board[tempX][tempY].type == INVALID){ continue;}
+        if(board[tempX][tempY].stack != NULL && board[tempX][tempY].stack->p_color != n_player.player_color){
+            printf("Select a %s coloured square,\n",n_player.player_color?"green":"red");continue;}
+        /* Valid condition */
+        if(sc_result == 2 && board[tempX][tempY].type==VALID && board[tempX][tempY].stack->p_color == n_player.player_color){
+            isValidChoice = true;
+        }
     }
     move.x1 = tempX; move.y1 = tempY;
-    printf("%s, what square would you like to move to: ",n_player.name);
-    sc_result = scanf("%d %d",&tempX,&tempY);
-    while(sc_result != 2){
-        printf("Invalid. what square would you like to move to(row col): ");
-        getchar();
+
+    // Where to move
+    isValidChoice = false;
+    while(isValidChoice == false){
+        printf("%s, what square would you like to move to: ",n_player.name);
         sc_result = scanf("%d %d",&tempX,&tempY);
+        if(sc_result != 2){
+            printf("invalid which square would you like to move: ",n_player.name);
+            continue;
+        }
+        /* Check the a valid conditions and display the appropriate message if necessary*/
+        if(tempX > BOARD_SIZE || tempX < 0 || tempY > BOARD_SIZE || tempY < 0){ printf("Move out of range,\n"); continue;}
+        if(board[tempX][tempY].type == INVALID){ continue;}
+        /* Valid condition */
+        if(sc_result == 2 && board[tempX][tempY].type==VALID){
+            isValidChoice = true;
+        }
     }
     move.x2 = tempX; move.y2 = tempY;
-
 
     int move_counts = get_stack_count(board[move.x1][move.y1].stack);
 
