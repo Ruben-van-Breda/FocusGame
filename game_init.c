@@ -14,6 +14,7 @@
 #include "game_init.h"
 
 #define MAX_CHAR 20
+
 #define UI_PLAYER1
 
 void initialize_players(player players[PLAYERS_NUM]){

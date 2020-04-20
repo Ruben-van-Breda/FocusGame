@@ -61,17 +61,17 @@ void print_board(square board[BOARD_SIZE][BOARD_SIZE]){
 void printStack(struct piece *stack,char *string){
     printf("%s ",string);
 
-    //There is only one piece in the stack
-    if(stack!=NULL && stack->next == NULL){
-        printf("%d\n",stack->p_color);
-        return;
-    }
+//    //There is only one piece in the stack
+//    if(stack!=NULL && stack->next == NULL){
+//        printf("%d\n",stack->p_color);
+//        return;
+//    }
 
-    while(stack->next != NULL){
+    while(stack != NULL){
         printf("%d",stack->p_color);
         stack = stack->next;
     }
-    printf("%d",stack->p_color);
+//    printf("%d",stack->p_color);
 
     printf("\n");
 

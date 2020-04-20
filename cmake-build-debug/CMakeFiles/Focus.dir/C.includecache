@@ -17,6 +17,8 @@ stdlib.h
 -
 stdbool.h
 -
+stdarg.h
+-
 
 /Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/GameLogic.h
 input_output.h
