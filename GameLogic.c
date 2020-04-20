@@ -23,16 +23,16 @@ struct square * pushStack(struct square *n_square1, struct square *n_square2){
     //TODO: BUG Move 1 1 -> 2 1 . BOOM NO WORKY NO MORE
 
     int ns_size = get_stack_count(n_square1->stack) + get_stack_count(n_square2->stack); // new stack size
-    piece *new_stackPtr = (piece *)malloc(sizeof(piece) * ns_size);
-    piece *stack1 = (piece *)malloc(sizeof(piece)*get_stack_count(n_square1->stack));
-    piece *stack2 = (piece *)malloc(sizeof(piece)*get_stack_count(n_square2->stack));
+//    piece *new_stackPtr = (piece *)malloc(sizeof(piece) * ns_size);
+//    piece *stack1 = (piece *)malloc(sizeof(piece)*get_stack_count(n_square1->stack));
+//    piece *stack2 = (piece *)malloc(sizeof(piece)*get_stack_count(n_square2->stack));
 
-    stack1 = n_square1->stack;
-    stack2 = n_square2->stack;
+    piece *stack1 = n_square1->stack;
+    piece *stack2 = n_square2->stack;
 
 
     //set the new_stackPtr = square1 stack
-    new_stackPtr = n_square1->stack;
+    piece* new_stackPtr = n_square1->stack;
     piece *currentPiece = new_stackPtr;
     //loop through and assign the elements of stack1 to the variable new_stackPtr
     while (new_stackPtr->next != NULL){
