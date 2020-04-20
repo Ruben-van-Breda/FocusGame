@@ -134,12 +134,14 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE], player n_player) {
     }
     move.x2 = tempX;
     move.y2 = tempY;
+    printStack(board[move.x2][move.y2].stack, "square2 : ");
 
     int move_counts = get_stack_count(board[move.x1][move.y1].stack);
 
 
     /*  Preform the move */
     board[move.x2][move.y2] = *pushStack(&board[move.x1][move.y1],&board[move.x2][move.y2]);
+    printStack(board[move.x2][move.y2].stack, "raw square");
     piece * fallenStack = malloc(sizeof(struct piece) * 5);
     fallenStack = fallenPieces(&board[move.x2][move.y2]);
     printStack(fallenStack, "Fallen Stack ->");
@@ -168,82 +170,6 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE], player n_player) {
 
 }
 
-//struct square *fallenPieces(struct square *n_square1, struct square *n_square2) {
-//
-////    int stack1_size = get_stack_count(n_square1->stack);
-////    int stack2_size = get_stack_count(n_square2->stack);
-////    int total_size = stack1_size + stack2_size;
-////
-//////    myPrinter("sd","stack1 size",stack1_size);
-////
-////
-////    if (total_size > STACK_LIMIT) {
-////        printf("\nLOGIC FOR FALLEN PIECES OF A STACK\n");
-////
-////
-////        //Delta is the difference between the new stack and the stack limit
-////        int delta = stack1_size - STACK_LIMIT;
-////        piece *fallenStack = (piece *) malloc(sizeof(piece) * total_size -
-////                                              STACK_LIMIT); //Allocate memory for the fallen pieces (excess > stack_limit)
-////        piece *new_stackPtr = (piece *) malloc(sizeof(piece) * total_size);
-////        new_stackPtr = n_square1->stack;
-////
-////        int count = 0;
-////        if (total_size > STACK_LIMIT) {
-////            while (count < STACK_LIMIT && new_stackPtr->next != NULL) {
-////                new_stackPtr = new_stackPtr->next;
-////                count++;
-////            } // at end of stack1 or count == limit
-////            if (count == STACK_LIMIT) {
-////                printf("Return ");
-////                printStack(n_square1, "square 1 as its reached the max size");
-////                return n_square1;
-////            }
-////
-////            printf("Count after 1st loop = %d\n", count);
-//////            printStack(new_stackPtr,"1currentStack ->");
-////
-////            new_stackPtr->next = n_square2->stack;
-////            printStack(new_stackPtr, "2currentStack ->");
-////
-////            while (count < STACK_LIMIT && new_stackPtr->next != NULL) {
-////                new_stackPtr = new_stackPtr->next;
-////                count++;
-////            }  // at end of stack2 or count == limit
-////            printf("END COUNT == %d\n", count);
-////            printf("Excess of %d\n", total_size - count);
-////            int excess = total_size - count;
-////            if (excess <= 0) {
-////                //Then there is no excess
-////                fallenStack = NULL;
-////                n_square2->stack = new_stackPtr;
-////                return n_square2;
-////
-////            } else if (excess > 0) {
-////                printStack(new_stackPtr,"newStackPtr->");
-////                n_square2->stack = new_stackPtr;
-////                fallenStack = new_stackPtr;
-////                printStack( fallenStack,"fallenStack -> ");
-//////                new_stackPtr->next = NULL;
-////                return n_square2;
-////            }
-////
-////            printStack(new_stackPtr, "3currentStack ->");
-////
-////
-////            if (n_square2->stack != NULL) {
-////                fallenStack = n_square2->stack;
-////            }
-////            printStack("fallenStack->", fallenStack);
-////
-////        }
-////    } else {
-////        n_square2 = pushStack(n_square1, n_square2);
-////        return n_square2;
-////    }
-//
-//
-//}
 struct piece *fallenPieces(struct square *n_square) {
     printf("stack size = %d\n",get_stack_count(n_square->stack));
     if(get_stack_count(n_square->stack) <= STACK_LIMIT) return NULL;
@@ -251,15 +177,24 @@ struct piece *fallenPieces(struct square *n_square) {
 
     piece *tempStack = n_square->stack;
     piece * final_stack = malloc(sizeof(piece)*STACK_LIMIT);
+    piece * new_stack = n_square->stack;
     int size = get_stack_count(n_square->stack);
     int count = 0;
     while(tempStack != NULL && count<STACK_LIMIT){
         tempStack = tempStack->next;
         count++;
     }
-    for (int i = 0; i < count; ++i) {
-        n_square->stack = n_square->stack->next;
+    printStack(tempStack,"tempStack ->");
+    printStack(new_stack,"newStack bfr ->");
+
+    for (int i = 0; i < count-1; ++i) {
+        new_stack = new_stack->next;
     }
+    new_stack->next = NULL;
+    printStack(new_stack,"newStack aft ->");
+
+//    n_square->stack = new_stack;
+    printStack(n_square->stack,"out n_square ->");
 
     final_stack = tempStack;
     printStack(final_stack,"FinalStack ->");

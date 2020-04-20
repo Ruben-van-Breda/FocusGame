@@ -11,7 +11,7 @@
 
 #define BOARD_SIZE 8
 #define PLAYERS_NUM 2
-#define STACK_LIMIT 2
+#define STACK_LIMIT 3
 
 #define UI_PLAYER1_CODE 0x25A7
 #define UI_PLAYER2_CODE 0x25A0
