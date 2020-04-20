@@ -21,20 +21,21 @@ struct piece *push(color n_color, struct piece *top) {
 
 struct square *pushStack(struct square *n_square1, struct square *n_square2) {
     // This function stacks top2 on top of stack top1
-    //TODO: BUG Move 1 1 -> 2 1 . BOOM NO WORKY NO MORE
 
     int ns_size = get_stack_count(n_square1->stack) + get_stack_count(n_square2->stack); // new stack size
-    piece *stack1 = n_square1->stack;
-    piece *stack2 = n_square2->stack;
+    piece *new_stackPtr = (piece *)malloc(sizeof(piece) * ns_size);
+    piece *stack1 = (piece *)malloc(sizeof(piece)*get_stack_count(n_square1->stack));
+    piece *stack2 = (piece *)malloc(sizeof(piece)*get_stack_count(n_square2->stack));
 
-//    printStack(n_square1, "square1 ->");
-//    printStack(n_square2, "square2 ->");
+    stack1 = n_square1->stack;
+    stack2 = n_square2->stack;
+
 
     //set the new_stackPtr = square1 stack
-    piece *new_stackPtr = n_square1->stack;
+    new_stackPtr = n_square1->stack;
     piece *currentPiece = new_stackPtr;
     //loop through and assign the elements of stack1 to the variable new_stackPtr
-    while (new_stackPtr->next != NULL) {
+    while (new_stackPtr->next != NULL){
         new_stackPtr = new_stackPtr->next;
     } //Move till the end of the pointer new_stackPtr
 
@@ -42,15 +43,16 @@ struct square *pushStack(struct square *n_square1, struct square *n_square2) {
 
     //Place the new stack on the square
 
-    n_square2->stack = new_stackPtr;
+//    n_square2->stack = new_stackPtr;
+    n_square2->stack = currentPiece;
+
     // '' This is needed to add the last piece of the stack to square2
-    if (get_stack_count(n_square2->stack) < ns_size) {
-        n_square2->stack = push(currentPiece->p_color, n_square2->stack);
-        printf("ADDED CURRENT PIECE\n");
-
-    }
-//    printStack(n_square2->stack, "currentStack ->");
-
+//    if(get_stack_count(n_square2->stack) < ns_size){
+//            printStack(n_square2->stack, "IN: n_square2->stack ->");
+//        n_square2->stack = n_square2->stack->next;
+//        printf("ADDED CURRENT PIECE\n");
+//
+//    }
 
     //Emtpy the moved square, square1
     set_empty(n_square1);
@@ -96,6 +98,7 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE], player n_player) {
             continue;
         }
         if (board[tempX][tempY].type == INVALID) { continue; }
+        if (get_stack_count(board[tempX][tempY].stack) == 0) { continue; }
         if (board[tempX][tempY].stack != NULL && board[tempX][tempY].stack->p_color != n_player.player_color) {
             printf("Select a %s coloured square,\n", n_player.player_color ? "green" : "red");
             continue;
@@ -111,6 +114,9 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE], player n_player) {
     move.y1 = tempY;
     piece *square1Stack = board[move.x1][move.y1].stack;
     printStack(square1Stack, "square1 : ");
+
+    int move_counts = get_stack_count(board[move.x1][move.y1].stack);
+
 
     // Where to move
     isValidChoice = false;
@@ -136,14 +142,17 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE], player n_player) {
     move.y2 = tempY;
     printStack(board[move.x2][move.y2].stack, "square2 : ");
 
-    int move_counts = get_stack_count(board[move.x1][move.y1].stack);
+
 
 
     /*  Preform the move */
     board[move.x2][move.y2] = *pushStack(&board[move.x1][move.y1],&board[move.x2][move.y2]);
-    printStack(board[move.x2][move.y2].stack, "raw square");
+//    printStack(board[move.x2][move.y2].stack, "raw square");
+
     piece * fallenStack = malloc(sizeof(struct piece) * 5);
     fallenStack = fallenPieces(&board[move.x2][move.y2]);
+    // add fallen stack to players reserves
+    /*The fallen pieces can be : Kept(reserves)if(own), (own)Played(Place pieces on board any valid square), (other)destroy piece*/
     printStack(fallenStack, "Fallen Stack ->");
     printStack(board[move.x2][move.y2].stack, "new square");
 
@@ -170,8 +179,9 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE], player n_player) {
 
 }
 
+
 struct piece *fallenPieces(struct square *n_square) {
-    printf("stack size = %d\n",get_stack_count(n_square->stack));
+    //printf("stack size = %d\n",get_stack_count(n_square->stack));
     if(get_stack_count(n_square->stack) <= STACK_LIMIT) return NULL;
     printStack(n_square->stack,"n_square ->");
 
@@ -184,24 +194,28 @@ struct piece *fallenPieces(struct square *n_square) {
         tempStack = tempStack->next;
         count++;
     }
-    printStack(tempStack,"tempStack ->");
-    printStack(new_stack,"newStack bfr ->");
+//    printStack(tempStack,"tempStack ->");
+//    printStack(new_stack,"newStack bfr ->");
 
     for (int i = 0; i < count-1; ++i) {
         new_stack = new_stack->next;
     }
     new_stack->next = NULL;
-    printStack(new_stack,"newStack aft ->");
+//    printStack(new_stack,"newStack aft ->");
 
 //    n_square->stack = new_stack;
-    printStack(n_square->stack,"out n_square ->");
+//    printStack(n_square->stack,"out n_square ->");
 
     final_stack = tempStack;
-    printStack(final_stack,"FinalStack ->");
+//    printStack(final_stack,"FinalStack ->");
 //    n_square->stack = NULL;
 //    n_square->stack = final_stack;
     return final_stack;
 
+
+}
+
+Move GetValidMoves(){
 
 }
 

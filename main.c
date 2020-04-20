@@ -20,6 +20,20 @@ int main() {
     initialize_players(players);
     initialize_board(board);
 
+    //MAKE DEBUG EASIER
+    /*board[1][2] = *pushStack(&board[1][1],&board[1][2]);
+    board[1][2] = *pushStack(&board[1][5],&board[1][2]);
+    board[1][2] = *pushStack(&board[1][6],&board[1][2]);
+    board[1][2] = *pushStack(&board[2][3],&board[1][2]);
+    printf("\n");
+    board[1][3] = *pushStack(&board[1][4],&board[1][3]);
+    board[1][3] = *pushStack(&board[2][1],&board[1][3]);
+    board[1][3] = *pushStack(&board[2][2],&board[1][3]);
+    board[1][3] = *pushStack(&board[2][5],&board[1][3]);
+
+    printStack(board[1][2].stack,"[1][2]");
+    printStack(board[1][3].stack,"[1][3]");*/
+
     print_board(board);
 
 //    board[1][3] = *pushStack( &board[1][2], &board[1][3]);
