@@ -77,6 +77,54 @@ void printStack(struct piece *stack,char *string){
 
 }
 
+void GetSteps(int *steps,int count) {
+    /*  This function will get the steps from the player and store it in the param n_steps
+            */
+
+    for (int j = 0; j < count; ++j) { steps[j] = -1;} //Initialise the array with null -> -1
+
+//    steps = (Step*)malloc(count*sizeof(steps));
+    if (steps == NULL) {
+        perror("Steps not allocated\n");
+    }
+
+    char input[count];
+    printf("Please enter %d moves\nw - up\ns - down\na - left\nd - right\n", count);
+    printf("Moves: ");
+    scanf("%s",&input);
+//    Step *temp_steps = steps;
+    for (int i = 0; i < count; ++i) {
+        char c = input[i];
+        printf("Char %c",c);
+        switch (c) {
+            case 'u':
+//                temp_steps->action = UP;
+                *(steps+i) = UP;
+                break;
+
+            case 'd':
+//                temp_steps->action = DOWN;
+                *(steps+i) = DOWN;
+                break;
+            case 'l':
+//                temp_steps->action = LEFT;
+                *(steps+i) = LEFT;
+                break;
+            case 'r':
+//                temp_steps->action = RIGHT;
+                *(steps+i) = RIGHT;
+                break;
+            default:
+                printf("GetSteps DEFUALT");
+        }
+//        temp_steps = temp_steps->next;
+    }
+//    steps->next = NULL;
+//    steps = &temp_steps;
+}
+
+
+
 
 int display_instructions(int type){
     printf("\n___ Instructions ___\n");
