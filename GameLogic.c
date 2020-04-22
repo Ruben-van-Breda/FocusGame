@@ -73,25 +73,31 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE], player n_player) {
     bool isValidChoice = false; //checks that the player can move in a valid square
     Move move;
     // Get move
-    int tempX, tempY, sc_result; //store temporary x,y values and sc_result to check if the input is correct
+    int tempX, tempY, sc_result = 0; //store temporary x,y values and sc_result to check if the input is correct
 
     //which square would you like to move:
     while (isValidChoice == false) {
         getchar();
         printf("%s, which square would you like to move: ", n_player.name);
-        sc_result = scanf("%d %d", &tempX, &tempY);
-        if (sc_result != 2) {
-            printf("Invalid which square would you like to move: ", n_player.name);
+        int sc_result = scanf("%d %d", &tempX, &tempY);
+
+        if(sc_result!=2){
+            printf("Invalid input. \n");
             continue;
         }
-        /* Check the a valid conditions and display the appropriate message if necessary*/
-        if (tempX > BOARD_SIZE || tempX < 0 || tempY > BOARD_SIZE || tempY < 0) {
-            printf("Move out of range,\n");
-            continue;
-        }
-        if (board[tempX][tempY].type == INVALID) { continue; }
-        if (get_stack_count(board[tempX][tempY].stack) == 0) { continue; }
-        if (board[tempX][tempY].stack != NULL && board[tempX][tempY].stack->p_color != n_player.player_color) {
+//        if (sc_result != 2) {
+//            printf("Invalid input. \n");
+////            sc_result = scanf("%d %d", &tempX, &tempY);
+//
+//            continue;
+//        }
+        move.x1 = tempX; move.x2 = move.x1;
+        move.y1 = tempY;move.y2 = move.y1;
+        if(!check_bounds(board,move)){ continue;};
+        bool isEmpty = get_stack_count(board[tempX][tempY].stack) == 0;
+        if (isEmpty) { continue; }
+        bool isSameColor = board[tempX][tempY].stack != NULL && board[tempX][tempY].stack->p_color != n_player.player_color;
+        if (isSameColor) {
             printf("Select a %s coloured square,\n", n_player.player_color ? "green" : "red");
             continue;
         }
@@ -111,7 +117,14 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE], player n_player) {
     GetSteps(actions,move_counts);
 
     /* Compute the destination of square 2 */
-    move = ComputeDestination(board,actions,move,move_counts);
+    /* Validating if the destination is a valid square */
+    Move temp = move;
+    temp = ComputeDestination(board,actions,temp,move_counts);
+    while(temp.x1 == 99){ // 99 is to act as a NULL indicator
+        GetSteps(actions,move_counts);
+        temp = ComputeDestination(board,actions,move,move_counts);
+    }
+    move = temp; // Validated move
     printStack(board[move.x2][move.y2].stack, "square2 : ");
 
     /*  Preform the move */
@@ -120,11 +133,17 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE], player n_player) {
     //TODO: LOGIC FOR FALLEN PIECES OF A STACK
     piece * fallenStack = malloc(sizeof(struct piece) * 5);
     fallenStack = fallenPieces(&board[move.x2][move.y2],n_player);
+    if(fallenStack != NULL){
 
-    // add fallen stack to players reserves
-    /*The fallen pieces can be : Kept(reserves)if(own), (own)Played(Place pieces on board any valid square), (other)destroy piece*/
-    printStack(fallenStack, "Fallen Stack ->");
+        // add fallen stack to players reserves
+        /*The fallen pieces can be : Kept(reserves)if(own), (own)Played(Place pieces on board any valid square), (other)destroy piece*/
+        printStack(fallenStack, "Fallen Stack ->");
+    }
+
     printStack(board[move.x2][move.y2].stack, "new square");
+
+
+
 
 }
 
@@ -188,8 +207,9 @@ Move GetValidMoves(){
 }
 
 struct Move ComputeDestination(struct square board[BOARD_SIZE][BOARD_SIZE],int *steps,Move n_move,int moves){
-    int x = n_move.x1;
-    int y = n_move.y1;
+    Move temp = n_move;
+    int x = temp.x1;
+    int y = temp.y1;
     bool isValid = false;
     while(isValid == false) {
         int i = 0;
@@ -213,16 +233,27 @@ struct Move ComputeDestination(struct square board[BOARD_SIZE][BOARD_SIZE],int *
         if (check_bounds(board,n_move)) {
             isValid = true;
         }
+        else{
+            temp.x1 = 99;
+            return temp;
+        }
+
     }
     return n_move;
 }
 
 bool check_bounds(struct square board[BOARD_SIZE][BOARD_SIZE],Move m){
+    /*  Manage validation of coordinates */
+    if (m.x1 > BOARD_SIZE || m.x1 < 0 || m.y1 > BOARD_SIZE || m.y1 < 0) {
+        printf("Move out of range,\n");
+        return false;
+    }
+
     if (m.x2 > BOARD_SIZE || m.x2 < 0 || m.y2 > BOARD_SIZE || m.y2 < 0) {
         printf("Move out of range,\n");
         return false;
     }
-    if(board[m.x2][m.y2].type == INVALID){
+    if(board[m.x1][m.y1].type == INVALID||board[m.x2][m.y2].type == INVALID){
         return false;
     }
 

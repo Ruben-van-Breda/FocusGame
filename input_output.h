@@ -22,6 +22,8 @@ typedef struct Step{
 void print_board(square board[BOARD_SIZE][BOARD_SIZE]);
 void printStack(struct piece *stack,char *string);
 void GetSteps(int *steps,int count);
+char ToLowerCase(char ch);
+
 int display_instructions(int type);
 
 

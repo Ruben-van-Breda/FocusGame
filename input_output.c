@@ -83,35 +83,52 @@ void GetSteps(int *steps,int count) {
 
     for (int j = 0; j < count; ++j) { steps[j] = -1;} //Initialise the array with null -> -1
 
+    bool isValid = false;
+    while(isValid == false){
+        char input[count];
+        char c;
+        printf("Please enter %d moves (up, down, left, right)\n", count);
+        printf("Moves: ");
+        scanf("%s",input);
 
-    char input[count];
-    printf("Please enter %d moves \n(up, down, left, right)\n", count);
-    printf("Moves: ");
-    scanf("%s",&input);
-    //loop through input and convert to steps
-    for (int i = 0; i < count; ++i) {
-        char c = input[i];
-        //TODO: EDGE CASES, VALIDATION
-
-        switch (c) {
-            case 'u':
-                *(steps+i) = UP;
-                break;
-            case 'd':
-                *(steps+i) = DOWN;
-                break;
-            case 'l':
-                *(steps+i) = LEFT;
-                break;
-            case 'r':
+        //loop through input and convert to steps
+        int i = 0;
+        for ( i = 0;i < count; ++i) {
+            c = input[i];
+            c = ToLowerCase(c);
+            if((c == 'u') || (c=='d') || (c=='r') || (c== 'l')){
+                switch (c) {
+                    case 'u':
+                        *(steps+i) = UP;
+                        break;
+                    case 'd':
+                        *(steps+i) = DOWN;
+                        break;
+                    case 'l':
+                        *(steps+i) = LEFT;
+                        break;
+                    case 'r':
 //                temp_steps->action = RIGHT;
-                *(steps+i) = RIGHT;
+                        *(steps+i) = RIGHT;
+                        break;
+                    default:
+                        printf("GetSteps DEFUALT");
+                        *(steps+i) = 99;
+                }
+            }
+            else{
+                printf("Invalid input, ");
                 break;
-            default:
-                printf("GetSteps DEFUALT");
-                *(steps+i) = 99;
+            }
+
+        }
+        if(i==count){
+            isValid = true;
         }
     }
+
+
+
 }
 
 
@@ -139,6 +156,15 @@ int display_instructions(int type){
             break;
     }
     return 0;
+}
+
+char ToLowerCase(char ch){
+    //  Checks if the character is in UpperCase
+    if(ch >= 65 && ch<=90){
+        ch += 32; // Change character to lowercase
+    }
+
+    return ch;
 }
 
 
