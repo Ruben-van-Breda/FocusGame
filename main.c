@@ -45,7 +45,7 @@ int main() {
     int num_of_rounds = 0;
 
     //TODO: Start game loop
-    while (gameState==0 || num_of_rounds == 3){
+    while (gameState == 0 || num_of_rounds < 3){
         //TODO: NEXT PLAYERS TURN
         int turn = num_of_rounds % PLAYERS_NUM;
 
@@ -53,6 +53,7 @@ int main() {
 //        display_instructions(0);
         //TODO: MAKE MOVE
         MakeMove(board,players[turn]);
+
         print_board(board);
 //        int win = check_win(board);
         num_of_rounds++;

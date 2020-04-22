@@ -83,31 +83,24 @@ void GetSteps(int *steps,int count) {
 
     for (int j = 0; j < count; ++j) { steps[j] = -1;} //Initialise the array with null -> -1
 
-//    steps = (Step*)malloc(count*sizeof(steps));
-    if (steps == NULL) {
-        perror("Steps not allocated\n");
-    }
 
     char input[count];
-    printf("Please enter %d moves\nw - up\ns - down\na - left\nd - right\n", count);
+    printf("Please enter %d moves \n(up, down, left, right)\n", count);
     printf("Moves: ");
     scanf("%s",&input);
-//    Step *temp_steps = steps;
+    //loop through input and convert to steps
     for (int i = 0; i < count; ++i) {
         char c = input[i];
-        printf("Char %c",c);
+        //TODO: EDGE CASES, VALIDATION
+
         switch (c) {
             case 'u':
-//                temp_steps->action = UP;
                 *(steps+i) = UP;
                 break;
-
             case 'd':
-//                temp_steps->action = DOWN;
                 *(steps+i) = DOWN;
                 break;
             case 'l':
-//                temp_steps->action = LEFT;
                 *(steps+i) = LEFT;
                 break;
             case 'r':
@@ -116,11 +109,9 @@ void GetSteps(int *steps,int count) {
                 break;
             default:
                 printf("GetSteps DEFUALT");
+                *(steps+i) = 99;
         }
-//        temp_steps = temp_steps->next;
     }
-//    steps->next = NULL;
-//    steps = &temp_steps;
 }
 
 

@@ -19,6 +19,7 @@ struct piece *push(color n_color, struct piece *top) {
 }
 struct square *pushStack(struct square *n_square1, struct square *n_square2) {
     // This function stacks top2 on top of stack top1
+    if(n_square1==n_square2){return n_square1;}
 
     int ns_size = get_stack_count(n_square1->stack) + get_stack_count(n_square2->stack); // new stack size
     piece *new_stackPtr = (piece *)malloc(sizeof(piece) * ns_size);
@@ -43,14 +44,6 @@ struct square *pushStack(struct square *n_square1, struct square *n_square2) {
 
 //    n_square2->stack = new_stackPtr;
     n_square2->stack = currentPiece;
-
-    // '' This is needed to add the last piece of the stack to square2
-//    if(get_stack_count(n_square2->stack) < ns_size){
-//            printStack(n_square2->stack, "IN: n_square2->stack ->");
-//        n_square2->stack = n_square2->stack->next;
-//        printf("ADDED CURRENT PIECE\n");
-//
-//    }
 
     //Emtpy the moved square, square1
     set_empty(n_square1);
@@ -82,6 +75,7 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE], player n_player) {
     // Get move
     int tempX, tempY, sc_result; //store temporary x,y values and sc_result to check if the input is correct
 
+    //which square would you like to move:
     while (isValidChoice == false) {
         getchar();
         printf("%s, which square would you like to move: ", n_player.name);
@@ -106,92 +100,40 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE], player n_player) {
             board[tempX][tempY].stack->p_color == n_player.player_color) {
             isValidChoice = true;
         }
-    }
-    // end, which square would you like to move:
+    }//@END while
     move.x1 = tempX;
     move.y1 = tempY;
-    piece *square1Stack = board[move.x1][move.y1].stack;
-    printStack(square1Stack, "square1 : ");
+    printStack(board[move.x1][move.y1].stack, "square1 : ");
 
+    /* Get steps from user */
     int move_counts = get_stack_count(board[move.x1][move.y1].stack);
-    Step *steps; //(Step*)malloc(move_counts*sizeof(Step));
     int actions[move_counts];
-    if(steps==NULL){perror("Steps is null\n");}
-
     GetSteps(actions,move_counts);
-    if(steps==NULL){perror("Steps is null\n");}
 
+    /* Compute the destination of square 2 */
     move = ComputeDestination(board,actions,move,move_counts);
-
-
-//    for (int i = 0; i < move_counts ; ++i) {
-//        printf("step -> %d\n",steps->action);
-//        steps =steps->next;
-//    }
-
-    // Where to move
-    isValidChoice = false;
-//    while (isValidChoice == false) {
-//        printf("%s, what square would you like to move to: ", n_player.name);
-//        sc_result = scanf("%d %d", &tempX, &tempY);
-//        if (sc_result != 2) {
-//            printf("Invalid which square would you like to move: ", n_player.name);
-//            continue;
-//        }
-//        /* Check the a valid conditions and display the appropriate message if necessary*/
-//        if (tempX > BOARD_SIZE || tempX < 0 || tempY > BOARD_SIZE || tempY < 0) {
-//            printf("Move out of range,\n");
-//            continue;
-//        }
-//        if (board[tempX][tempY].type == INVALID) { continue; }
-//        /* Valid condition */
-//        if (sc_result == 2 && board[tempX][tempY].type == VALID) {
-//            isValidChoice = true;
-//        }
-//    }
-//    move.x2 = tempX;
-//    move.y2 = tempY;
     printStack(board[move.x2][move.y2].stack, "square2 : ");
-
-
-
 
     /*  Preform the move */
     board[move.x2][move.y2] = *pushStack(&board[move.x1][move.y1],&board[move.x2][move.y2]);
-//    printStack(board[move.x2][move.y2].stack, "raw square");
 
+    //TODO: LOGIC FOR FALLEN PIECES OF A STACK
     piece * fallenStack = malloc(sizeof(struct piece) * 5);
-    fallenStack = fallenPieces(&board[move.x2][move.y2]);
+    fallenStack = fallenPieces(&board[move.x2][move.y2],n_player);
+
     // add fallen stack to players reserves
     /*The fallen pieces can be : Kept(reserves)if(own), (own)Played(Place pieces on board any valid square), (other)destroy piece*/
     printStack(fallenStack, "Fallen Stack ->");
     printStack(board[move.x2][move.y2].stack, "new square");
 
-    //TODO: LOGIC FOR FALLEN PIECES OF A STACK
-//   FallenPieces(board[move.x2][move.y2].stack);
-
-
-
-
-
-
-
-
-
-
-//    board[move.x1][move.y1].type = INVALID;
-    //TODO: Check that the player can move there
-    //The square is a valid selection
-//    if(board[move.x1][move.y1].stack->p_color == n_player.player_color){
-//        int move_counts = get_stack_count(board[move.x1][move.y1].stack);
-//        printf("Enter %d moves (u,d,l,r): ",move_counts);
-//    }
-
-//    free(steps);
 }
 
 
-struct piece *fallenPieces(struct square *n_square) {
+struct piece *fallenPieces(struct square *n_square, player n_player) {
+    /*This function takes in a square and removes pieces from the bottom of the stack exceeding the STACK_LIMIT
+     Then the new stack of fallen pieces are counted and allocated towards the players own_pieces and adversary members. FallenPieces is returned
+     */
+
     //printf("stack size = %d\n",get_stack_count(n_square->stack));
     if(get_stack_count(n_square->stack) <= STACK_LIMIT) return NULL;
     printStack(n_square->stack,"n_square ->");
@@ -199,7 +141,6 @@ struct piece *fallenPieces(struct square *n_square) {
     piece *tempStack = n_square->stack;
     piece * final_stack = malloc(sizeof(piece)*STACK_LIMIT);
     piece * new_stack = n_square->stack;
-    int size = get_stack_count(n_square->stack);
     int count = 0;
     while(tempStack != NULL && count<STACK_LIMIT){
         tempStack = tempStack->next;
@@ -207,20 +148,36 @@ struct piece *fallenPieces(struct square *n_square) {
     }
 //    printStack(tempStack,"tempStack ->");
 //    printStack(new_stack,"newStack bfr ->");
-
-    for (int i = 0; i < count-1; ++i) {
-        new_stack = new_stack->next;
-    }
-    new_stack->next = NULL;
+//
+//    for (int i = 0; i < count-1; ++i) {
+//        new_stack = new_stack->next;
+//    }
+//    new_stack->next = NULL;
 //    printStack(new_stack,"newStack aft ->");
 
 //    n_square->stack = new_stack;
 //    printStack(n_square->stack,"out n_square ->");
 
     final_stack = tempStack;
-//    printStack(final_stack,"FinalStack ->");
-//    n_square->stack = NULL;
-//    n_square->stack = final_stack;
+    tempStack = final_stack;
+
+
+     /* Add the fallen pieces to own_pieces and adversary*/
+    if(tempStack!=NULL){
+        int my_pieces = n_player.own_pieces,others = n_player.adversary;
+        while (tempStack!=NULL){
+            if(tempStack->p_color == n_player.player_color){ my_pieces +=1;} // if its my own piece
+            else{ others += 1;} // not my piece
+            tempStack = tempStack->next;
+        }
+        printf("\nmy pieces = %d, adv = %d\n",my_pieces,others);
+        /*  Assign new values to the players members   */
+        n_player.own_pieces = my_pieces;
+        n_player.adversary = others;
+
+        printf("MAKE DECISION HERE ABOUT RESERVES\n");
+
+    }
     return final_stack;
 
 
@@ -234,18 +191,9 @@ struct Move ComputeDestination(struct square board[BOARD_SIZE][BOARD_SIZE],int *
     int x = n_move.x1;
     int y = n_move.y1;
     bool isValid = false;
-//    Step *temp = steps;
     while(isValid == false) {
-//        steps = temp;
-        if(steps==NULL){
-            perror("steps null");
-            n_move.x2 = 999;
-            n_move.y2 = 999;
-            return n_move;
-            break;
-        }
         int i = 0;
-        int count = sizeof(steps)/ sizeof(steps[0]);
+        /* compute the destination coordinates */
         while (i<moves) {
             if (*(steps+i)== UP) {
                 x -= 1;
