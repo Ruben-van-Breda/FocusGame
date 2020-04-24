@@ -7,8 +7,10 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdarg.h>
+#include <string.h>
 
 
+//square board[BOARD_SIZE][BOARD_SIZE];
 
 struct piece *push(color n_color, struct piece *top) {
     piece *curr = top;
@@ -69,47 +71,20 @@ int get_stack_count(piece *n_stack) {
     return count;
 }
 
-void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE], player n_player) {
+void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE], player n_player,bool fromReserves) {
+
     bool isValidChoice = false; //checks that the player can move in a valid square
-    Move move;
-    // Get move
-    int tempX, tempY, sc_result = 0; //store temporary x,y values and sc_result to check if the input is correct
-
-    //which square would you like to move:
-    while (isValidChoice == false) {
-        getchar();
-        printf("%s, which square would you like to move: ", n_player.name);
-        int sc_result = scanf("%d %d", &tempX, &tempY);
-
-        if(sc_result!=2){
-            printf("Invalid input. \n");
-            continue;
-        }
-//        if (sc_result != 2) {
-//            printf("Invalid input. \n");
-////            sc_result = scanf("%d %d", &tempX, &tempY);
-//
-//            continue;
-//        }
-        move.x1 = tempX; move.x2 = move.x1;
-        move.y1 = tempY;move.y2 = move.y1;
-        if(!check_bounds(board,move)){ continue;};
-        bool isEmpty = get_stack_count(board[tempX][tempY].stack) == 0;
-        if (isEmpty) { continue; }
-        bool isSameColor = board[tempX][tempY].stack != NULL && board[tempX][tempY].stack->p_color != n_player.player_color;
-        if (isSameColor) {
-            printf("Select a %s coloured square,\n", n_player.player_color ? "green" : "red");
-            continue;
-        }
-        /* Valid condition */
-        if (sc_result == 2 && board[tempX][tempY].type == VALID &&
-            board[tempX][tempY].stack->p_color == n_player.player_color) {
-            isValidChoice = true;
-        }
-    }//@END while
-    move.x1 = tempX;
-    move.y1 = tempY;
-    printStack(board[move.x1][move.y1].stack, "square1 : ");
+    Move move = GetValidMove(board,n_player,fromReserves);
+    if(fromReserves){
+        board[move.x1][move.y1].stack = push(n_player.player_color, board[move.x1][move.y1].stack);
+        piece * fallenStack = malloc(sizeof(piece)*STACK_LIMIT);
+        fallenStack = fallenPieces(&board[move.x2][move.y2],n_player);
+        printf("[%d][%d] -> ",move.x1,move.y1);
+        printStack(board[move.x1][move.y1].stack, "");
+        return;
+    }
+    printf("[%d][%d] -> ",move.x1,move.y1);
+    printStack(board[move.x1][move.y1].stack, "");
 
     /* Get steps from user */
     int move_counts = get_stack_count(board[move.x1][move.y1].stack);
@@ -117,21 +92,15 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE], player n_player) {
     GetSteps(actions,move_counts);
 
     /* Compute the destination of square 2 */
-    /* Validating if the destination is a valid square */
-    Move temp = move;
-    temp = ComputeDestination(board,actions,temp,move_counts);
-    while(temp.x1 == 99){ // 99 is to act as a NULL indicator
-        GetSteps(actions,move_counts);
-        temp = ComputeDestination(board,actions,move,move_counts);
-    }
-    move = temp; // Validated move
-    printStack(board[move.x2][move.y2].stack, "square2 : ");
+    move = GetValidDestination(board,actions,move,move_counts);
+    printf("[%d][%d] -> ",move.x2,move.y2);
+    printStack(board[move.x2][move.y2].stack, "");
 
     /*  Preform the move */
     board[move.x2][move.y2] = *pushStack(&board[move.x1][move.y1],&board[move.x2][move.y2]);
 
     //TODO: LOGIC FOR FALLEN PIECES OF A STACK
-    piece * fallenStack = malloc(sizeof(struct piece) * 5);
+    piece * fallenStack = malloc(sizeof(piece)*STACK_LIMIT);
     fallenStack = fallenPieces(&board[move.x2][move.y2],n_player);
     if(fallenStack != NULL){
 
@@ -168,10 +137,10 @@ struct piece *fallenPieces(struct square *n_square, player n_player) {
 //    printStack(tempStack,"tempStack ->");
 //    printStack(new_stack,"newStack bfr ->");
 //
-//    for (int i = 0; i < count-1; ++i) {
-//        new_stack = new_stack->next;
-//    }
-//    new_stack->next = NULL;
+    for (int i = 0; i < count-1; ++i) {
+        new_stack = new_stack->next;
+    }
+    new_stack->next = NULL;
 //    printStack(new_stack,"newStack aft ->");
 
 //    n_square->stack = new_stack;
@@ -202,8 +171,52 @@ struct piece *fallenPieces(struct square *n_square, player n_player) {
 
 }
 
-Move GetValidMoves(){
+Move GetValidMove(struct square board[BOARD_SIZE][BOARD_SIZE],player n_player,bool fromReserves){
+    bool isValidChoice = false;
+    int tempX = -1, tempY = -1;
+    Move move;
+    //which square would you like to move:
+    while (isValidChoice == false) {
+        getchar();
 
+        printf("%s, which square would you like to %s: ", n_player.name,fromReserves?"place your piece":"move");
+        int sc_result = scanf("%d %d", &tempX, &tempY);
+
+        if(sc_result!=2){
+            printf("Invalid input. \n");
+            continue;
+        }
+        move.x1 = tempX; move.x2 = move.x1;
+        move.y1 = tempY;move.y2 = move.y1;
+        if(!check_bounds(board,move)){ continue;};
+        bool isEmpty = get_stack_count(board[tempX][tempY].stack) == 0;
+        if (isEmpty && !fromReserves) { continue; }
+        bool isSameColor = board[tempX][tempY].stack != NULL && board[tempX][tempY].stack->p_color != n_player.player_color;
+        if (isSameColor) {
+            printf("Select a %s coloured square,\n", n_player.player_color ? "green" : "red");
+            continue;
+        }
+        if(sc_result == 2 && board[tempX][tempY].type == VALID && fromReserves){
+            isValidChoice = true;
+            break;
+        }
+        /* Valid condition */
+        else if (sc_result == 2 && board[tempX][tempY].type == VALID &&
+            board[tempX][tempY].stack->p_color == n_player.player_color) {
+            isValidChoice = true;
+        }
+    }//@END while
+//    printf("in_ Move: %d,%d,%d,%d",move.x1,move.y1,move.x2,move.y2);
+    return move;
+}
+Move GetValidDestination(struct square board[BOARD_SIZE][BOARD_SIZE],int *steps,Move n_move,int moves){
+    Move temp = n_move;
+    temp = ComputeDestination(board,steps,temp,moves);
+    while(temp.x1 == 99){ // 99 is to act as a NULL indicator
+        GetSteps(steps,moves);
+        temp = ComputeDestination(board,steps,n_move,moves);
+    }
+    return temp;
 }
 
 struct Move ComputeDestination(struct square board[BOARD_SIZE][BOARD_SIZE],int *steps,Move n_move,int moves){
@@ -260,7 +273,38 @@ bool check_bounds(struct square board[BOARD_SIZE][BOARD_SIZE],Move m){
     return true;
 }
 
-
+int can_player_move(struct square board[BOARD_SIZE][BOARD_SIZE]){
+    /*This function will check if there is a player that has no pieces on the board and if so return its player id
+     * else return -1 if all players have at least 1 piece on the table to play*/
+    int player_counter[PLAYERS_NUM];
+    //Initialise the player frequency
+    for (int k = 0; k < PLAYERS_NUM; ++k) {player_counter[k] = 0;}
+    /*  Add up player pieces on board   */
+    for(int i = 0; i < BOARD_SIZE; i ++){
+        for (int j = 0; j < BOARD_SIZE; j++){
+            if(board[i][j].type == VALID && board[i][j].stack != NULL ) {
+                color top = board[i][j].stack->p_color;
+                switch (top){
+                    case RED:
+                        player_counter[RED]++;
+                        break;
+                    case GREEN:
+                        player_counter[GREEN]++;
+                        break;
+                }
+            }
+        }
+    }
+    printf("\n-----%d,%d-----\n",player_counter[0],player_counter[1]);
+    bool playerCanMove = true;
+    for (int l = 0; l < PLAYERS_NUM; ++l) {
+        playerCanMove = (player_counter[l] > 0);
+        if(playerCanMove == false){
+            return l;
+        }
+    }
+    return -1; //play on, no issues
+}
 
 int myPrinter(const char *format, ...) {
     //Takes in a string of arguments and prints the arguments accroding to their type given in the string

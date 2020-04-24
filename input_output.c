@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <wchar.h>
 #include <locale.h>
+
 #include "input_output.h"
 #include "GameLogic.h"
 
@@ -158,6 +159,19 @@ int display_instructions(int type){
     return 0;
 }
 
+void clear_screen(){
+//int c;
+//while((c=getchar()) != '\n' && c != ' ' && c != '\t' && c !=  EOF);
+//fflush(stdin);
+#if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
+        system("clear");
+#endif
+
+#if defined(_WIN32) || defined(_WIN64)
+        system("cls");
+#endif
+
+}
 char ToLowerCase(char ch){
     //  Checks if the character is in UpperCase
     if(ch >= 65 && ch<=90){
@@ -166,6 +180,7 @@ char ToLowerCase(char ch){
 
     return ch;
 }
+
 
 
 

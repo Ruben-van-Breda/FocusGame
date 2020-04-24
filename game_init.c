@@ -31,7 +31,7 @@ void initialize_players(player players[PLAYERS_NUM]){
         }
 
         //TODO: Get players name as input from user
-        printf("Please enter player %d' name: ",i+1);
+        printf("Please enter player %d name: ",i+1);
         scanf("%s",name_input);
 
         char c; // Char c is to store the current character in the name_input
@@ -51,8 +51,18 @@ void initialize_players(player players[PLAYERS_NUM]){
     wchar_t ui_p1 = UI_PLAYER1_CODE;
     wchar_t ui_p2 = UI_PLAYER2_CODE;
 
-    wprintf(ANSI_COLOR_RED L"empty square %lc\n%s", ui_empty ,ANSI_COLOR_RESET);
-    for (int j = 0; j < PLAYERS_NUM; ++j) {wprintf(L"%s is %s %lc\n",players[j].name,(players[j].player_color?"green":"red"), (players[j].player_color?ui_p1:ui_p2));}
+//    wprintf(ANSI_COLOR_RED L"empty square %lc\n%s", ui_empty ,ANSI_COLOR_RESET);
+    for (int j = 0; j < PLAYERS_NUM; ++j) {
+
+        wprintf(L"%s is %s ",players[j].name,(players[j].player_color?"green":"red"));
+
+        if(players[j].player_color==RED){
+            wprintf(ANSI_COLOR_RED L"%lc\n%s",UI_PLAYER1_CODE,ANSI_COLOR_RESET);
+        }
+        if(players[j].player_color==GREEN){
+            wprintf(ANSI_COLOR_GREEN L"%lc\n%s",UI_PLAYER2_CODE, ANSI_COLOR_RESET);
+        }
+    }
 
 }
 
