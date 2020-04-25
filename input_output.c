@@ -23,16 +23,18 @@
 /* Function to print the board:
  * Invalid Squares are printed as | - |
  * Valid empty squares are printed as |   |
- * Valid squares with a GREEN piece are printed as | G |
+ * Valid squares with a BLUE piece are printed as | G |
  * Valid squares with a RED piece are printed as | R | */
 
 void print_board(square board[BOARD_SIZE][BOARD_SIZE]){
     wchar_t empty_square = 0x25A2;
     wchar_t invalid_square = 0x25A6;
     wchar_t ui_player1 = UI_PLAYER1_CODE;
-    wchar_t black_square = UI_PLAYER2_CODE;
+    wchar_t ui_player2 = UI_PLAYER2_CODE;
+    wchar_t ui_test = 0x20DD;//0x25EF;//0x26AB;//0x274D;//0x26AA; //0x20DD;
+    ui_player1 = 0x1F535;
 
-    printf("\t****** The Board ******\n");
+    printf("************ The Board ************\n");
     printf("\t0\t1\t2\t3\t4\t5\t6\t7\n");
     for(int i = 0; i < BOARD_SIZE; i ++){
         printf("%d\t",i);
@@ -43,11 +45,11 @@ void print_board(square board[BOARD_SIZE][BOARD_SIZE]){
 //                    printf("[ ");
                     wprintf(L"%lc\t", empty_square);}
                 else{
-                    if (board[i][j].stack->p_color == GREEN){//printf("| G%d",get_stack_count(board[i][j].stack));
-                         wprintf(ANSI_COLOR_GREEN L"%lc%d%s\t", ui_player1, get_stack_count(board[i][j].stack),ANSI_COLOR_RESET);}
+                    if (board[i][j].stack->p_color == BLUE){//printf("| G%d",get_stack_count(board[i][j].stack));
+                         wprintf(ANSI_COLOR_BLUE L"%lc%d%s\t", UI_BLUE_CIRCLE, get_stack_count(board[i][j].stack),ANSI_COLOR_RESET);}
 
                     else {//printf("| R%d",get_stack_count(board[i][j].stack));
-                         wprintf(ANSI_COLOR_RED L"%lc%d%s\t", black_square,get_stack_count(board[i][j].stack),ANSI_COLOR_RESET);}
+                         wprintf(ANSI_COLOR_RED L"%lc%d%s\t", UI_RED_CIRCLE,get_stack_count(board[i][j].stack),ANSI_COLOR_RESET);}
                 }
             }
             else

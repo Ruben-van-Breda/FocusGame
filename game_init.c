@@ -59,7 +59,7 @@ void initialize_players(player players[PLAYERS_NUM]){
         if(players[j].player_color==RED){
             wprintf(ANSI_COLOR_RED L"%lc\n%s",UI_PLAYER1_CODE,ANSI_COLOR_RESET);
         }
-        if(players[j].player_color==GREEN){
+        if(players[j].player_color == BLUE){
             wprintf(ANSI_COLOR_GREEN L"%lc\n%s",UI_PLAYER2_CODE, ANSI_COLOR_RESET);
         }
     }
@@ -80,11 +80,11 @@ s->stack = NULL;
 s->num_pieces = 0;
 }
 
-//Set squares  with a GREEN piece
+//Set squares  with a BLUE piece
 set_green(square * s){
 s->type = VALID;
 s->stack = (piece *) malloc (sizeof(piece));
-s->stack->p_color = GREEN;
+s->stack->p_color = BLUE;
 s->stack->next = NULL;
 s->num_pieces = 1;
 }

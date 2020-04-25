@@ -17,6 +17,10 @@
 #define UI_PLAYER2_CODE 0x25A0
 #define UI_EMPTY_CODE 0x25A2
 #define UI_INVALID_CODE 0x25A6
+#define UI_RED_CIRCLE 0x1F534
+#define UI_BLUE_CIRCLE 0x1F535
+
+#define UI_TEST Ux20DD
 
 // UNICODE COLORS
 #define ANSI_COLOR_RED     "\x1b[31m"
@@ -30,7 +34,7 @@
 //colors that a piece can have
 typedef enum color {
     RED,
-    GREEN,
+    BLUE,
     SELECTION
 }color;
 

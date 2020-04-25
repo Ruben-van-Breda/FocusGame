@@ -76,6 +76,7 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE], player n_player,bool 
     bool isValidChoice = false; //checks that the player can move in a valid square
     Move move = GetValidMove(board,n_player,fromReserves);
     if(fromReserves){
+        printf("Playing from reserves\n");
         board[move.x1][move.y1].stack = push(n_player.player_color, board[move.x1][move.y1].stack);
         piece * fallenStack = malloc(sizeof(piece)*STACK_LIMIT);
         fallenStack = fallenPieces(&board[move.x2][move.y2],n_player);
@@ -193,7 +194,7 @@ Move GetValidMove(struct square board[BOARD_SIZE][BOARD_SIZE],player n_player,bo
         if (isEmpty && !fromReserves) { continue; }
         bool isSameColor = board[tempX][tempY].stack != NULL && board[tempX][tempY].stack->p_color != n_player.player_color;
         if (isSameColor) {
-            printf("Select a %s coloured square,\n", n_player.player_color ? "green" : "red");
+            printf("Select a %s coloured square,\n", n_player.player_color ? "blue" : "red");
             continue;
         }
         if(sc_result == 2 && board[tempX][tempY].type == VALID && fromReserves){
@@ -257,12 +258,12 @@ struct Move ComputeDestination(struct square board[BOARD_SIZE][BOARD_SIZE],int *
 
 bool check_bounds(struct square board[BOARD_SIZE][BOARD_SIZE],Move m){
     /*  Manage validation of coordinates */
-    if (m.x1 > BOARD_SIZE || m.x1 < 0 || m.y1 > BOARD_SIZE || m.y1 < 0) {
+    if (m.x1 >= BOARD_SIZE || m.x1 < 0 || m.y1 >= BOARD_SIZE || m.y1 < 0) {
         printf("Move out of range,\n");
         return false;
     }
 
-    if (m.x2 > BOARD_SIZE || m.x2 < 0 || m.y2 > BOARD_SIZE || m.y2 < 0) {
+    if (m.x2 >= BOARD_SIZE || m.x2 < 0 || m.y2 >= BOARD_SIZE || m.y2 < 0) {
         printf("Move out of range,\n");
         return false;
     }
@@ -288,8 +289,8 @@ int can_player_move(struct square board[BOARD_SIZE][BOARD_SIZE]){
                     case RED:
                         player_counter[RED]++;
                         break;
-                    case GREEN:
-                        player_counter[GREEN]++;
+                    case BLUE:
+                        player_counter[BLUE]++;
                         break;
                 }
             }

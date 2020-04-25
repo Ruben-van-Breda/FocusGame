@@ -24,7 +24,7 @@ int main() {
     //MAKE DEBUG EASIER
     players[0].own_pieces = 4;
 
-    board[1][1].stack = NULL;
+    /*board[1][1].stack = NULL;
     board[1][2].stack = NULL;
     board[1][3].stack = NULL;
     board[1][4].stack = NULL;
@@ -57,7 +57,7 @@ int main() {
     board[6][3].stack = NULL;
     board[6][4].stack = NULL;
     board[6][5].stack = NULL;
-//    board[6][6].stack = NULL;
+    board[6][6].stack = NULL;*/
 
 
 
@@ -104,9 +104,11 @@ int main() {
         num_of_rounds++;
 
     }
-    //There is a winner
-    if(winner!=-1){
-        printf("\n\n_____GAME_OVER______\n%s WINS\n",players[winner].name);
+    /*  We have a winner   */
+    if(winner != -1){
+        printf("\n\n_____GAME_OVER______\n");
+        printf("%s coloured %s WINS with %d captured pieces\n",players[winner].name,players[winner].player_color?"green":"red",players[winner].adversary);
+
     }
 
     return 0;
