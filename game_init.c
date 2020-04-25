@@ -30,7 +30,7 @@ void initialize_players(player players[PLAYERS_NUM]){
             perror("Error: Memory was not allocated ");
         }
 
-        //TODO: Get players name as input from user
+        /* Get players name as input from user */
         printf("Please enter player %d name: ",i+1);
         scanf("%s",name_input);
 
@@ -54,13 +54,13 @@ void initialize_players(player players[PLAYERS_NUM]){
 //    wprintf(ANSI_COLOR_RED L"empty square %lc\n%s", ui_empty ,ANSI_COLOR_RESET);
     for (int j = 0; j < PLAYERS_NUM; ++j) {
 
-        wprintf(L"%s is %s ",players[j].name,(players[j].player_color?"green":"red"));
+        wprintf(L"%s is %s ",players[j].name,(players[j].player_color?"blue":"red"));
 
         if(players[j].player_color==RED){
-            wprintf(ANSI_COLOR_RED L"%lc\n%s",UI_PLAYER1_CODE,ANSI_COLOR_RESET);
+            wprintf(ANSI_COLOR_RED L"%lc\n%s",UI_RED_CIRCLE,ANSI_COLOR_RESET);
         }
         if(players[j].player_color == BLUE){
-            wprintf(ANSI_COLOR_GREEN L"%lc\n%s",UI_PLAYER2_CODE, ANSI_COLOR_RESET);
+            wprintf(ANSI_COLOR_BLUE L"%lc\n%s",UI_BLUE_CIRCLE, ANSI_COLOR_RESET);
         }
     }
 

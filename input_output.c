@@ -34,29 +34,27 @@ void print_board(square board[BOARD_SIZE][BOARD_SIZE]){
     wchar_t ui_test = 0x20DD;//0x25EF;//0x26AB;//0x274D;//0x26AA; //0x20DD;
     ui_player1 = 0x1F535;
 
-    printf("************ The Board ************\n");
+    printf("*********** The Board ***********\n");
     printf("\t0\t1\t2\t3\t4\t5\t6\t7\n");
     for(int i = 0; i < BOARD_SIZE; i ++){
         printf("%d\t",i);
 
         for (int j = 0; j < BOARD_SIZE; j++){
             if(board[i][j].type == VALID) {
-                if(board[i][j].stack == NULL){//printf("|   ");
+                if(board[i][j].stack == NULL){
 //                    printf("[ ");
                     wprintf(L"%lc\t", empty_square);}
                 else{
-                    if (board[i][j].stack->p_color == BLUE){//printf("| G%d",get_stack_count(board[i][j].stack));
+                    if (board[i][j].stack->p_color == BLUE){
                          wprintf(ANSI_COLOR_BLUE L"%lc%d%s\t", UI_BLUE_CIRCLE, get_stack_count(board[i][j].stack),ANSI_COLOR_RESET);}
 
-                    else {//printf("| R%d",get_stack_count(board[i][j].stack));
+                    else {
                          wprintf(ANSI_COLOR_RED L"%lc%d%s\t", UI_RED_CIRCLE,get_stack_count(board[i][j].stack),ANSI_COLOR_RESET);}
                 }
             }
             else
-//                printf("| - ");
                 wprintf(L"%lc\t", invalid_square);
         }
-//        printf("|\n");
     printf("\n");
     }
 }
@@ -64,17 +62,10 @@ void print_board(square board[BOARD_SIZE][BOARD_SIZE]){
 void printStack(struct piece *stack,char *string){
     printf("%s ",string);
 
-//    //There is only one piece in the stack
-//    if(stack!=NULL && stack->next == NULL){
-//        printf("%d\n",stack->p_color);
-//        return;
-//    }
-
     while(stack != NULL){
         printf("%d",stack->p_color);
         stack = stack->next;
     }
-//    printf("%d",stack->p_color);
 
     printf("\n");
 
@@ -111,7 +102,6 @@ void GetSteps(int *steps,int count) {
                         *(steps+i) = LEFT;
                         break;
                     case 'r':
-//                temp_steps->action = RIGHT;
                         *(steps+i) = RIGHT;
                         break;
                     default:
@@ -120,7 +110,7 @@ void GetSteps(int *steps,int count) {
                 }
             }
             else{
-                printf("Invalid input, ");
+                printf("Invalid input [u,d,l,r] ");
                 break;
             }
 
@@ -138,27 +128,53 @@ void GetSteps(int *steps,int count) {
 
 
 int display_instructions(int type){
-    printf("\n___ Instructions ___\n");
-    switch(type){
-        case 0: // What square would the player like to move
-
-            //TODO: Get the square which must be moved
-           // printf("What square would you like to move?\n");
-
-            //TODO: CHeck that the square can be moved by the player
-            //TODO: Get the move_count
-            //TODO: Get the user move
-
-
-
-
-
-            break;
-        default:
-            printf("What would you like to do ******  ?");
-            break;
+    int choice = -1;
+    bool playGame = false;
+    while(playGame == false){
+        printf(ANSI_COLOR_MAGENTA"\n___ Instructions ___\n");
+        printf("1) Start Game\n");
+        printf("2) How to play\n");
+        printf("3) About Game%s\ninput: ",ANSI_COLOR_RESET);
+        scanf("%d",&choice);
+        switch(choice){
+            case 1:
+                playGame = true;
+                break;
+            case 2:
+                printf(ANSI_COLOR_CYAN "Domination/Focus Board Game\n"
+                       "First to choose a square you would like to move enter the coordinates of the square such as (1 1) for the square at row 1 column 1\n"
+                       "Once a valid square is selected you will have a number of moves (up, down, left and right) \ndepending on the stack of the selected square. "
+                       "Moving up and right will be : ur\n"
+                       "If a stack reaches 5 the pieces will fall from the bottom, fallen Stack. If the fallen pieces belong to you it will be added for later in the game, \n"
+                       "if the piece is not one of your own, it will be added to your adversary.\n"
+                       "If you have no pieces left on the board nor any pieces of your own captured the other player wins.%s",ANSI_COLOR_RESET);
+                break;
+            case 3:
+                printf(ANSI_COLOR_YELLOW"About Focus Project, this project was written by Ruben van Breda in C for first year semester 2.%s\n",ANSI_COLOR_RESET);
+                break;
+        }
     }
+
+
+
+
+
     return 0;
+}
+
+void display_logo(){
+    printf(ANSI_COLOR_BLUE "\n____________________________________________\n");
+    printf("%s******\t%s****\t %s****\t %s*****\t %s******\n",ANSI_COLOR_BLUE,ANSI_COLOR_RED,ANSI_COLOR_BLUE,ANSI_COLOR_RED,ANSI_COLOR_BLUE);
+    printf("%s*   \t%s*  *\t %s*     \t%s*    \t%s*     \n",ANSI_COLOR_BLUE,ANSI_COLOR_RED,ANSI_COLOR_BLUE,ANSI_COLOR_RED,ANSI_COLOR_BLUE);
+    printf("%s***** \t%s*  *\t %s*   \t %s*****\t %s****  \n",ANSI_COLOR_BLUE,ANSI_COLOR_RED,ANSI_COLOR_BLUE,ANSI_COLOR_RED,ANSI_COLOR_BLUE);
+    printf("%s*     \t%s*  *\t %s*   \t     %s*\t %s*  \n",ANSI_COLOR_BLUE,ANSI_COLOR_RED,ANSI_COLOR_BLUE,ANSI_COLOR_RED,ANSI_COLOR_BLUE);
+    printf("%s*     \t%s****\t %s****\t %s*****\t %s******\n",ANSI_COLOR_BLUE,ANSI_COLOR_RED,ANSI_COLOR_BLUE,ANSI_COLOR_RED,ANSI_COLOR_BLUE);
+    printf("____________________________________________ by Ruben van Breda %s\n",ANSI_COLOR_RESET);
+
+
+
+
+
 }
 
 void clear_screen(){

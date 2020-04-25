@@ -13,6 +13,8 @@
 #include <wchar.h>
 square board[BOARD_SIZE][BOARD_SIZE];
 int main() {
+    display_logo();
+    display_instructions(0);
 
     // declaration of the players and the board
     player players[PLAYERS_NUM];
@@ -58,9 +60,6 @@ int main() {
     board[6][4].stack = NULL;
     board[6][5].stack = NULL;
     board[6][6].stack = NULL;*/
-
-
-
     players[0].own_pieces = 4;
 
     print_board(board);
