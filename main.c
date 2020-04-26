@@ -12,9 +12,12 @@
 #include <zconf.h>
 #include <wchar.h>
 square board[BOARD_SIZE][BOARD_SIZE];
+
+
+
 int main() {
     display_logo();
-    display_instructions(0);
+    display_start_instructions(0);
 
     // declaration of the players and the board
     player players[PLAYERS_NUM];
@@ -24,43 +27,51 @@ int main() {
     int winner = -1;
 
     //MAKE DEBUG EASIER
-    players[0].own_pieces = 4;
+//    players[0].own_pieces = 4;
 
     /*board[1][1].stack = NULL;
     board[1][2].stack = NULL;
     board[1][3].stack = NULL;
     board[1][4].stack = NULL;
     board[1][5].stack = NULL;
-    board[1][6].stack = NULL;
+    board[1][6].stack = NULL;*/
+    board[1][2].stack = push(board[1][1].stack->p_color,board[1][2].stack);
+    board[1][2].stack = push(board[1][1].stack->p_color,board[1][2].stack);
+    board[1][2].stack = push(board[1][1].stack->p_color,board[1][2].stack);
+    board[1][2].stack = push(board[1][1].stack->p_color,board[1][2].stack);
 
-    board[2][1].stack = NULL;
-    board[2][2].stack = NULL;
-    board[2][3].stack = NULL;
-    board[2][4].stack = NULL;
-    board[2][5].stack = NULL;
-    board[3][1].stack = NULL;
-    board[3][2].stack = NULL;
-    board[3][3].stack = NULL;
-    board[3][4].stack = NULL;
-    board[3][5].stack = NULL;
-    board[4][1].stack = NULL;
-    board[4][4].stack = NULL;
-    board[4][3].stack = NULL;
-    board[4][2].stack = NULL;
-    board[4][5].stack = NULL;
-    board[5][1].stack = NULL;
-    board[5][2].stack = NULL;
-    board[5][3].stack = NULL;
-    board[5][4].stack = NULL;
-    board[5][5].stack = NULL;
-    board[5][6].stack = NULL;
-    board[6][1].stack = NULL;
-    board[6][2].stack = NULL;
-    board[6][3].stack = NULL;
-    board[6][4].stack = NULL;
-    board[6][5].stack = NULL;
-    board[6][6].stack = NULL;*/
-    players[0].own_pieces = 4;
+//    players[0] = playerUpdate(players[0],1,0);
+//    printf("Player 1 own pieces = %d",players[0].own_pieces);
+//    testInFunc(&players[0]);
+
+//    board[2][1].stack = NULL;
+//    board[2][2].stack = NULL;
+//    board[2][3].stack = NULL;
+//    board[2][4].stack = NULL;
+//    board[2][5].stack = NULL;
+//    board[3][1].stack = NULL;
+//    board[3][2].stack = NULL;
+//    board[3][3].stack = NULL;
+//    board[3][4].stack = NULL;
+//    board[3][5].stack = NULL;
+//    board[4][1].stack = NULL;
+//    board[4][4].stack = NULL;
+//    board[4][3].stack = NULL;
+//    board[4][2].stack = NULL;
+//    board[4][5].stack = NULL;
+//    board[5][1].stack = NULL;
+//    board[5][2].stack = NULL;
+//    board[5][3].stack = NULL;
+//    board[5][4].stack = NULL;
+//    board[5][5].stack = NULL;
+//    board[5][6].stack = NULL;
+//    board[6][1].stack = NULL;
+//    board[6][2].stack = NULL;
+//    board[6][3].stack = NULL;
+//    board[6][4].stack = NULL;
+//    board[6][5].stack = NULL;
+//    board[6][6].stack = NULL;
+//    players[0].own_pieces = 4;
 
     print_board(board);
 
@@ -73,8 +84,21 @@ int main() {
         //TODO: NEXT PLAYERS TURN
         int turn = num_of_rounds % PLAYERS_NUM;
 
+        /*  Display the instructions to the player    */
+        int choice = display_instructions(board,players[turn]);
         //TODO: MAKE MOVE
-        MakeMove(board,players[turn],false);
+        /* Move a square on the board */
+        if(choice == 1){
+            MakeMove(board,"",&players[turn],false);
+        }
+        //Play from reserves
+        else if(choice == 2){
+            MakeMove(board,"",&players[turn],true);
+        }
+//        players[0] = playerUpdate(players[0],1,0);
+        printf("Player %d own pieces = %d",turn,players[turn].own_pieces);
+
+
         int loser = can_player_move(board);
         if(loser == -1){
             //All fine play on
@@ -92,10 +116,11 @@ int main() {
             }
             else{
                 //play a reserve onto table
-                MakeMove(board,players[loser],true);
+                MakeMove(board,"Play a reserve on the table",&players[loser],true);
                 num_of_rounds++;
             }
         }
+
         print_board(board);
 
 
@@ -103,6 +128,9 @@ int main() {
         num_of_rounds++;
 
     }
+
+
+
     /*  We have a winner   */
     if(winner != -1){
         printf("\n\n_____GAME_OVER______\n");

@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/GameLogic.c
+GameLogic.h
+/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/GameLogic.h
+stdio.h
+-
+stdlib.h
+-
+stdbool.h
+-
+stdarg.h
+-
+string.h
+-
+wchar.h
+-
+
 /Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/GameLogic.h
 search.h
 -
@@ -15,20 +31,6 @@ input_output.h
 /Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/input_output.h
 
 /Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/game_init.h
-
-/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/input_output.c
-stdio.h
--
-stdlib.h
--
-wchar.h
--
-locale.h
--
-input_output.h
-/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/input_output.h
-GameLogic.h
-/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/GameLogic.h
 
 /Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/input_output.h
 game_init.h

@@ -63,7 +63,7 @@ void printStack(struct piece *stack,char *string){
     printf("%s ",string);
 
     while(stack != NULL){
-        printf("%d",stack->p_color);
+        printf("%s",stack->p_color?"B":"R");
         stack = stack->next;
     }
 
@@ -124,10 +124,7 @@ void GetSteps(int *steps,int count) {
 
 }
 
-
-
-
-int display_instructions(int type){
+int display_start_instructions(int type){
     int choice = -1;
     bool playGame = false;
     while(playGame == false){
@@ -160,6 +157,45 @@ int display_instructions(int type){
 
 
     return 0;
+}
+
+int display_instructions(square board[BOARD_SIZE][BOARD_SIZE],player n_player){
+    wprintf(L"%s %lc you own %d pieces\n",n_player.name,n_player.player_color?UI_BLUE_CIRCLE:UI_RED_CIRCLE,n_player.own_pieces);
+
+    int choice = -1;
+    while(choice != 1 && choice!= 2){
+        printf("0) View the stack of a square\n");
+        if(n_player.own_pieces > 0){
+            printf("1) Move piece on board\n");
+            printf("2) Play a piece on the board from reserves\n");
+        }
+        else if(n_player.own_pieces <= 0){
+//            return 1;
+            printf("1) Move piece on board\n");
+        }
+
+        scanf("%d",&choice);
+        /* Print out a stack on a board */
+        if(choice == 0){
+            printf("Enter which square you would like to view: ");
+
+            Move m = GetValidMove(board,n_player,true);
+            printf("[%d][%d] -> ",m.x1,m.y1);
+            printStack(board[m.x1][m.y1].stack,"");
+        }
+
+        if(n_player.own_pieces <= 0 && choice == 2)
+        {
+            choice = -1;
+        }
+
+
+
+
+    }
+    return choice;
+
+
 }
 
 void display_logo(){

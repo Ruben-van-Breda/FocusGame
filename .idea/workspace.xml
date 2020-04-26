@@ -34,14 +34,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d1a6ca9-418d-4b62-ab35-23f1480a7226" name="Default Changelist" comment="working on final touches really">
+    <list default="true" id="2d1a6ca9-418d-4b62-ab35-23f1480a7226" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameLogic.c" beforeDir="false" afterPath="$PROJECT_DIR$/GameLogic.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameLogic.h" beforeDir="false" afterPath="$PROJECT_DIR$/GameLogic.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/game_init.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/game_init.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/input_output.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/input_output.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Focus.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Focus" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Focus" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_init.c" beforeDir="false" afterPath="$PROJECT_DIR$/game_init.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input_output.c" beforeDir="false" afterPath="$PROJECT_DIR$/input_output.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input_output.h" beforeDir="false" afterPath="$PROJECT_DIR$/input_output.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
@@ -130,7 +130,7 @@
       <workItem from="1587311774044" duration="60332000" />
       <workItem from="1587652204178" duration="8551000" />
       <workItem from="1587723908434" duration="221000" />
-      <workItem from="1587805151314" duration="6253000" />
+      <workItem from="1587805151314" duration="22849000" />
     </task>
     <task id="LOCAL-00001" summary="Finished player initialisation">
       <created>1586256361749</created>
@@ -377,7 +377,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587807426072</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="added a logo and instruction menu">
+      <created>1587815973250</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1587815973250</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -401,7 +408,8 @@
     <MESSAGE value="Worked on steps." />
     <MESSAGE value="Stable Build" />
     <MESSAGE value="working on final touches really" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on final touches really" />
+    <MESSAGE value="added a logo and instruction menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a logo and instruction menu" />
   </component>
   <component name="WindowStateProjectService">
     <state x="624" y="307" key="#Deployment" timestamp="1586281200307">
@@ -424,75 +432,80 @@
       <screen x="0" y="23" width="1360" height="711" />
     </state>
     <state x="506" y="155" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1360.711@0.23.1360.711" timestamp="1585247891140" />
-    <state x="508" y="231" key="CommitChangelistDialog2" timestamp="1587815063553">
+    <state x="508" y="231" key="CommitChangelistDialog2" timestamp="1587815973092">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state x="508" y="231" key="CommitChangelistDialog2/0.0.2048.1280@0.0.2048.1280" timestamp="1587815063553" />
+    <state x="508" y="231" key="CommitChangelistDialog2/0.0.2048.1280@0.0.2048.1280" timestamp="1587815973092" />
     <state x="445" y="202" key="CommitChangelistDialog2/1792.0.1116.756/0.0.1792.1120@0.0.1792.1120" timestamp="1587653544294" />
     <state x="825" y="564" key="Github.CreateGistDialog" timestamp="1586200473167">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
     <state x="825" y="564" key="Github.CreateGistDialog/0.0.2048.1280@0.0.2048.1280" timestamp="1586200473167" />
-    <state width="1998" height="640" key="GridCell.Tab.0.bottom" timestamp="1587815874569">
+    <state width="1998" height="475" key="GridCell.Tab.0.bottom" timestamp="1587893952132">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="1998" height="640" key="GridCell.Tab.0.bottom/0.0.2048.1280@0.0.2048.1280" timestamp="1587815874569" />
+    <state width="1870" height="-5" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1587828314392" />
+    <state width="1998" height="475" key="GridCell.Tab.0.bottom/0.0.2048.1280@0.0.2048.1280" timestamp="1587893952132" />
     <state width="1116" height="683" key="GridCell.Tab.0.bottom/0.23.2048.1257@0.23.2048.1257" timestamp="1587561636081" />
     <state width="1116" height="689" key="GridCell.Tab.0.bottom/1792.0.1116.756/0.0.1792.1120@0.0.1792.1120" timestamp="1587657348445" />
     <state width="1116" height="689" key="GridCell.Tab.0.bottom/1792.23.1116.733/0.0.1792.1120@0.0.1792.1120" timestamp="1587657364169" />
-    <state width="1998" height="640" key="GridCell.Tab.0.center" timestamp="1587815874568">
+    <state width="1998" height="475" key="GridCell.Tab.0.center" timestamp="1587893952129">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="1998" height="640" key="GridCell.Tab.0.center/0.0.2048.1280@0.0.2048.1280" timestamp="1587815874568" />
+    <state width="1870" height="-5" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1587828314391" />
+    <state width="1998" height="475" key="GridCell.Tab.0.center/0.0.2048.1280@0.0.2048.1280" timestamp="1587893952129" />
     <state width="1116" height="683" key="GridCell.Tab.0.center/0.23.2048.1257@0.23.2048.1257" timestamp="1587561636080" />
     <state width="1116" height="689" key="GridCell.Tab.0.center/1792.0.1116.756/0.0.1792.1120@0.0.1792.1120" timestamp="1587657348444" />
     <state width="1116" height="689" key="GridCell.Tab.0.center/1792.23.1116.733/0.0.1792.1120@0.0.1792.1120" timestamp="1587657364168" />
-    <state width="1998" height="640" key="GridCell.Tab.0.left" timestamp="1587815874567">
+    <state width="1998" height="475" key="GridCell.Tab.0.left" timestamp="1587893952127">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="1998" height="640" key="GridCell.Tab.0.left/0.0.2048.1280@0.0.2048.1280" timestamp="1587815874567" />
+    <state width="1870" height="-5" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1587828314390" />
+    <state width="1998" height="475" key="GridCell.Tab.0.left/0.0.2048.1280@0.0.2048.1280" timestamp="1587893952127" />
     <state width="1116" height="683" key="GridCell.Tab.0.left/0.23.2048.1257@0.23.2048.1257" timestamp="1587561636076" />
     <state width="1116" height="689" key="GridCell.Tab.0.left/1792.0.1116.756/0.0.1792.1120@0.0.1792.1120" timestamp="1587657348443" />
     <state width="1116" height="689" key="GridCell.Tab.0.left/1792.23.1116.733/0.0.1792.1120@0.0.1792.1120" timestamp="1587657364167" />
-    <state width="1998" height="640" key="GridCell.Tab.0.right" timestamp="1587815874568">
+    <state width="1998" height="475" key="GridCell.Tab.0.right" timestamp="1587893952130">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="1998" height="640" key="GridCell.Tab.0.right/0.0.2048.1280@0.0.2048.1280" timestamp="1587815874568" />
+    <state width="1870" height="-5" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1587828314391" />
+    <state width="1998" height="475" key="GridCell.Tab.0.right/0.0.2048.1280@0.0.2048.1280" timestamp="1587893952130" />
     <state width="1116" height="683" key="GridCell.Tab.0.right/0.23.2048.1257@0.23.2048.1257" timestamp="1587561636080" />
     <state width="1116" height="689" key="GridCell.Tab.0.right/1792.0.1116.756/0.0.1792.1120@0.0.1792.1120" timestamp="1587657348445" />
     <state width="1116" height="689" key="GridCell.Tab.0.right/1792.23.1116.733/0.0.1792.1120@0.0.1792.1120" timestamp="1587657364168" />
-    <state width="2006" height="427" key="GridCell.Tab.1.bottom" timestamp="1587806348611">
+    <state width="1998" height="414" key="GridCell.Tab.1.bottom" timestamp="1587893084497">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="2006" height="427" key="GridCell.Tab.1.bottom/0.0.2048.1280@0.0.2048.1280" timestamp="1587806348611" />
+    <state width="1998" height="414" key="GridCell.Tab.1.bottom/0.0.2048.1280@0.0.2048.1280" timestamp="1587893084497" />
     <state width="1750" height="367" key="GridCell.Tab.1.bottom/1792.0.1116.756/0.0.1792.1120@0.0.1792.1120" timestamp="1587554746435" />
-    <state width="2006" height="427" key="GridCell.Tab.1.center" timestamp="1587806348610">
+    <state width="1998" height="414" key="GridCell.Tab.1.center" timestamp="1587893084496">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="2006" height="427" key="GridCell.Tab.1.center/0.0.2048.1280@0.0.2048.1280" timestamp="1587806348610" />
+    <state width="1998" height="414" key="GridCell.Tab.1.center/0.0.2048.1280@0.0.2048.1280" timestamp="1587893084496" />
     <state width="1750" height="367" key="GridCell.Tab.1.center/1792.0.1116.756/0.0.1792.1120@0.0.1792.1120" timestamp="1587554746433" />
-    <state width="2006" height="427" key="GridCell.Tab.1.left" timestamp="1587806348610">
+    <state width="1998" height="414" key="GridCell.Tab.1.left" timestamp="1587893084496">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="2006" height="427" key="GridCell.Tab.1.left/0.0.2048.1280@0.0.2048.1280" timestamp="1587806348610" />
+    <state width="1998" height="414" key="GridCell.Tab.1.left/0.0.2048.1280@0.0.2048.1280" timestamp="1587893084496" />
     <state width="1750" height="367" key="GridCell.Tab.1.left/1792.0.1116.756/0.0.1792.1120@0.0.1792.1120" timestamp="1587554746432" />
-    <state width="2006" height="427" key="GridCell.Tab.1.right" timestamp="1587806348610">
+    <state width="1998" height="414" key="GridCell.Tab.1.right" timestamp="1587893084497">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="2006" height="427" key="GridCell.Tab.1.right/0.0.2048.1280@0.0.2048.1280" timestamp="1587806348610" />
+    <state width="1998" height="414" key="GridCell.Tab.1.right/0.0.2048.1280@0.0.2048.1280" timestamp="1587893084497" />
     <state width="1750" height="367" key="GridCell.Tab.1.right/1792.0.1116.756/0.0.1792.1120@0.0.1792.1120" timestamp="1587554746434" />
     <state x="735" y="364" key="MultipleFileMergeDialog" timestamp="1586332914252">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
     <state x="735" y="364" key="MultipleFileMergeDialog/0.0.2048.1280@0.0.2048.1280" timestamp="1586332914252" />
-    <state x="525" y="279" key="SettingsEditor" timestamp="1587807474385">
-      <screen x="0" y="0" width="2048" height="1280" />
+    <state x="492" y="183" key="SettingsEditor" timestamp="1587825930129">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="492" y="183" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1587825930129" />
     <state x="525" y="279" key="SettingsEditor/0.0.2048.1280@0.0.2048.1280" timestamp="1587807474385" />
-    <state x="624" y="368" key="Vcs.Push.Dialog.v2" timestamp="1587807431863">
+    <state x="624" y="368" key="Vcs.Push.Dialog.v2" timestamp="1587815976173">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state x="624" y="368" key="Vcs.Push.Dialog.v2/0.0.2048.1280@0.0.2048.1280" timestamp="1587807431863" />
+    <state x="624" y="368" key="Vcs.Push.Dialog.v2/0.0.2048.1280@0.0.2048.1280" timestamp="1587815976173" />
     <state x="546" y="322" key="Vcs.Push.Dialog.v2/1792.0.1116.756/0.0.1792.1120@0.0.1792.1120" timestamp="1587555223847" />
     <state x="640" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1587724212698">
       <screen x="0" y="0" width="2048" height="1280" />
@@ -528,21 +541,6 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/input_output.c</url>
-          <line>83</line>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/input_output.c</url>
-          <line>84</line>
-          <option name="timeStamp" value="73" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/input_output.c</url>
-          <line>86</line>
-          <option name="timeStamp" value="74" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/input_output.c</url>
           <line>92</line>
           <option name="timeStamp" value="77" />
         </line-breakpoint>
@@ -553,43 +551,58 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/GameLogic.c</url>
-          <line>210</line>
+          <line>251</line>
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>102</line>
-          <option name="timeStamp" value="83" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>88</line>
-          <option name="timeStamp" value="84" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>89</line>
-          <option name="timeStamp" value="85" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>90</line>
-          <option name="timeStamp" value="86" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>94</line>
-          <option name="timeStamp" value="87" />
+          <url>file://$PROJECT_DIR$/GameLogic.c</url>
+          <line>185</line>
+          <option name="timeStamp" value="93" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/GameLogic.c</url>
-          <line>79</line>
-          <option name="timeStamp" value="88" />
+          <line>186</line>
+          <option name="timeStamp" value="94" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/GameLogic.c</url>
-          <line>84</line>
-          <option name="timeStamp" value="89" />
+          <line>188</line>
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GameLogic.c</url>
+          <line>187</line>
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.c</url>
+          <line>44</line>
+          <option name="timeStamp" value="99" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.c</url>
+          <line>57</line>
+          <option name="timeStamp" value="100" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GameLogic.c</url>
+          <line>199</line>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GameLogic.c</url>
+          <line>204</line>
+          <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GameLogic.c</url>
+          <line>175</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/GameLogic.c</url>
+          <line>176</line>
+          <option name="timeStamp" value="104" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
