@@ -44,33 +44,33 @@ int main() {
 //    printf("Player 1 own pieces = %d",players[0].own_pieces);
 //    testInFunc(&players[0]);
 
-//    board[2][1].stack = NULL;
-//    board[2][2].stack = NULL;
-//    board[2][3].stack = NULL;
-//    board[2][4].stack = NULL;
-//    board[2][5].stack = NULL;
-//    board[3][1].stack = NULL;
-//    board[3][2].stack = NULL;
-//    board[3][3].stack = NULL;
-//    board[3][4].stack = NULL;
-//    board[3][5].stack = NULL;
-//    board[4][1].stack = NULL;
-//    board[4][4].stack = NULL;
-//    board[4][3].stack = NULL;
-//    board[4][2].stack = NULL;
-//    board[4][5].stack = NULL;
-//    board[5][1].stack = NULL;
-//    board[5][2].stack = NULL;
-//    board[5][3].stack = NULL;
-//    board[5][4].stack = NULL;
-//    board[5][5].stack = NULL;
-//    board[5][6].stack = NULL;
-//    board[6][1].stack = NULL;
-//    board[6][2].stack = NULL;
-//    board[6][3].stack = NULL;
-//    board[6][4].stack = NULL;
-//    board[6][5].stack = NULL;
-//    board[6][6].stack = NULL;
+    board[2][1].stack = NULL;
+    board[2][2].stack = NULL;
+    board[2][3].stack = NULL;
+    board[2][4].stack = NULL;
+    board[2][5].stack = NULL;
+    board[3][1].stack = NULL;
+    board[3][2].stack = NULL;
+    board[3][3].stack = NULL;
+    board[3][4].stack = NULL;
+    board[3][5].stack = NULL;
+    board[4][1].stack = NULL;
+    board[4][4].stack = NULL;
+    board[4][3].stack = NULL;
+    board[4][2].stack = NULL;
+    board[4][5].stack = NULL;
+    board[5][1].stack = NULL;
+    board[5][2].stack = NULL;
+    board[5][3].stack = NULL;
+    board[5][4].stack = NULL;
+    board[5][5].stack = NULL;
+    board[5][6].stack = NULL;
+    board[6][1].stack = NULL;
+    board[6][2].stack = NULL;
+    board[6][3].stack = NULL;
+    board[6][4].stack = NULL;
+    board[6][5].stack = NULL;
+    board[6][6].stack = NULL;
 //    players[0].own_pieces = 4;
 
     print_board(board);
@@ -80,7 +80,7 @@ int main() {
     int num_of_rounds = 0;
 
     //TODO: Start game loop
-    while (gameState == 0 || num_of_rounds < 3){
+    while (gameState == 0){
         //TODO: NEXT PLAYERS TURN
         int turn = num_of_rounds % PLAYERS_NUM;
 
@@ -95,14 +95,9 @@ int main() {
         else if(choice == 2){
             MakeMove(board,"",&players[turn],true);
         }
-//        players[0] = playerUpdate(players[0],1,0);
-        printf("Player %d own pieces = %d",turn,players[turn].own_pieces);
 
 
         int loser = can_player_move(board);
-        if(loser == -1){
-            //All fine play on
-        }
         if(loser != -1){
             print_board(board);
             //Check if that player has any reserves to play
@@ -134,7 +129,7 @@ int main() {
     /*  We have a winner   */
     if(winner != -1){
         printf("\n\n_____GAME_OVER______\n");
-        printf("%s coloured %s WINS with %d captured pieces\n",players[winner].name,players[winner].player_color?"green":"red",players[winner].adversary);
+        wprintf(L"%s %lc WINS with %d captured pieces\n",players[winner].name,players[winner].player_color?UI_BLUE_CIRCLE:UI_RED_CIRCLE,players[winner].adversary);
 
     }
 

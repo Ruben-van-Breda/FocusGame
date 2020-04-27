@@ -74,6 +74,7 @@ int get_stack_count(piece *n_stack) {
 
 void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE],char *string,player *n_player,bool fromReserves) {
 
+    printf("%s",n_player->player_color?ANSI_COLOR_BLUE:ANSI_COLOR_RED);
 
     bool isValidChoice = false; //checks that the player can move in a valid square
     wprintf(L"%s %lc, which square would you like to move: ",n_player->name,n_player->player_color?UI_BLUE_CIRCLE:UI_RED_CIRCLE);
@@ -81,6 +82,7 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE],char *string,player *n
     if(fromReserves){
         printf("Playing from reserves\n");
         board[move.x1][move.y1].stack = push(n_player->player_color, board[move.x1][move.y1].stack);
+        playerUpdate(n_player,0,0);
         piece * fallenStack = malloc(sizeof(piece)*STACK_LIMIT);
         fallenStack = fallenPieces(&board[move.x2][move.y2],&n_player);
         printf("[%d][%d] -> ",move.x1,move.y1);
@@ -107,31 +109,8 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE],char *string,player *n
     piece * fallenStack = malloc(sizeof(piece)*STACK_LIMIT);
     fallenStack = fallenPieces(&board[move.x2][move.y2],n_player);
     if(fallenStack != NULL){
-//        piece *tempStack = fallenStack;
-//        if(tempStack!=NULL){
-//            int my_pieces = n_player.own_pieces,others = n_player.adversary;
-//            while (tempStack!=NULL){
-//                if(tempStack->p_color == n_player.player_color){ my_pieces +=1;} // if its my own piece
-//                else{ others += 1;} // not my piece
-//                tempStack = tempStack->next;
-//            }
-//            //TODO: own pieces not updating on player in main method
-//            /*  Assign new values to the players members   */
-//            n_player.own_pieces = my_pieces;
-//            n_player.adversary = others;
-//            printf("\nmy pieces = %d, adv = %d\n",n_player.own_pieces,n_player.adversary);
-//
-//
-//
-//        }
-        // add fallen stack to players reserves
-        /*The fallen pieces can be : Kept(reserves)if(own), (own)Played(Place pieces on board any valid square), (other)destroy piece*/
         printStack(fallenStack, "Fallen Stack ->");
     }
-
-//    printStack(board[move.x2][move.y2].stack, "new square");
-
-    printf("_____%s has %d own pieces____",n_player->name,n_player->own_pieces);
 
 
 
@@ -186,10 +165,9 @@ struct piece *fallenPieces(struct square *n_square, player *n_player) {
 //        n_player.own_pieces = my_pieces;
 //        n_player.adversary = others;
         playerUpdate(n_player,my_pieces,others);
-        printf("\nmy pieces = %d, adv = %d\n",n_player->own_pieces,n_player->adversary);
+//        printf("\nmy pieces = %d, adv = %d\n",n_player->own_pieces,n_player->adversary);
 
 
-        printf("MAKE DECISION HERE ABOUT RESERVES\n");
 
     }
     return final_stack;
@@ -198,6 +176,7 @@ struct piece *fallenPieces(struct square *n_square, player *n_player) {
 }
 player playerUpdate(player *p,int own,int adv){
     p->own_pieces = own;
+    p->adversary = adv;
     return *p;
 }
 
@@ -210,6 +189,8 @@ Move GetValidMove(struct square board[BOARD_SIZE][BOARD_SIZE],player n_player,bo
      * depending on the param fromReserves which will allow a pos which is empty or not of their color
      *
      * */
+    printf("%s",ANSI_COLOR_RESET);
+
     bool isValidChoice = false;
     int tempX = -1, tempY = -1;
     Move move;
@@ -222,7 +203,7 @@ Move GetValidMove(struct square board[BOARD_SIZE][BOARD_SIZE],player n_player,bo
         int sc_result = scanf("%d %d", &tempX, &tempY);
 
         if(sc_result!=2){
-            printf("Invalid input. \n");
+            printf("%sInvalid input. %s\n",ANSI_COLOR_ERROR,ANSI_COLOR_RESET);
             continue;
         }
         move.x1 = tempX; move.x2 = move.x1;
@@ -235,7 +216,7 @@ Move GetValidMove(struct square board[BOARD_SIZE][BOARD_SIZE],player n_player,bo
         if(isSameColor && fromReserves){isValidChoice = true; break;}
 
         if (isSameColor) {
-            printf("Select a %s coloured square,\n", n_player.player_color ? "blue" : "red");
+            printf("%sSelect a %s coloured square%s\n",ANSI_COLOR_ERROR, n_player.player_color ? "blue" : "red",ANSI_COLOR_RESET);
             continue;
         }
         /* Valid condition */
@@ -301,15 +282,16 @@ struct Move ComputeDestination(struct square board[BOARD_SIZE][BOARD_SIZE],int *
 bool check_bounds(struct square board[BOARD_SIZE][BOARD_SIZE],Move m){
     /*  Manage validation of coordinates */
     if (m.x1 >= BOARD_SIZE || m.x1 < 0 || m.y1 >= BOARD_SIZE || m.y1 < 0) {
-        printf("Move out of range,\n");
+        printf("%sMove out of range,%s\n",ANSI_COLOR_ERROR,ANSI_COLOR_RESET);
         return false;
     }
 
     if (m.x2 >= BOARD_SIZE || m.x2 < 0 || m.y2 >= BOARD_SIZE || m.y2 < 0) {
-        printf("Move out of range,\n");
+        printf("%sMove out of range,%s\n",ANSI_COLOR_ERROR,ANSI_COLOR_RESET);
         return false;
     }
     if(board[m.x1][m.y1].type == INVALID||board[m.x2][m.y2].type == INVALID){
+        printf("%sInvalid square%s\n",ANSI_COLOR_ERROR,ANSI_COLOR_RESET);
         return false;
     }
 
