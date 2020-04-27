@@ -17,7 +17,6 @@ square board[BOARD_SIZE][BOARD_SIZE];
 
 int main() {
     display_logo();
-    display_gameover();
     display_start_instructions(0);
 
     // declaration of the players and the board
@@ -86,18 +85,18 @@ int main() {
         int turn = num_of_rounds % PLAYERS_NUM;
 
         /*  Display the instructions to the player    */
-        int choice = display_instructions(board,players[turn]);
-        //TODO: MAKE MOVE
+        int choice = display_player_options(board, players[turn]);
+
         /* Move a square on the board */
         if(choice == 1){
             MakeMove(board,"",&players[turn],false);
         }
-        //Play from reserves
+        /*  play from reserves */
         else if(choice == 2){
             MakeMove(board,"",&players[turn],true);
         }
 
-
+        /*  Winning Conditions    */
         int loser = can_player_move(board);
         if(loser != -1){
             print_board(board);

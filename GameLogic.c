@@ -85,12 +85,7 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE],char *string,player *n
         Move move = GetValidMove(board,*n_player,fromReserves);
         /*  Preform Move    */
         board[move.x1][move.y1].stack = push(n_player->player_color, board[move.x1][move.y1].stack);
-//        playerUpdate(n_player,0,0);
-        n_player->own_pieces -= 1;
-        piece * fallenStack = malloc(sizeof(piece)*STACK_LIMIT);
-        fallenStack = fallenPieces(&board[move.x2][move.y2],&n_player);
-        printf("[%d][%d] -> ",move.x1,move.y1);
-        printStack(board[move.x1][move.y1].stack, "");
+        fallenPieces(&board[move.x1][move.y1],&n_player);
         return;
     }
     /*  prompt player to enter a square */
@@ -112,26 +107,16 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE],char *string,player *n
 
     /*  Preform the move */
     board[move.x2][move.y2] = *pushStack(&board[move.x1][move.y1],&board[move.x2][move.y2]);
-
-    //TODO: LOGIC FOR FALLEN PIECES OF A STACK
-    piece * fallenStack = malloc(sizeof(piece)*STACK_LIMIT);
-    fallenStack = fallenPieces(&board[move.x2][move.y2],n_player);
-//    if(fallenStack != NULL){
-//        printStack(fallenStack, "Fallen Stack ->");
-//    }
-
-
-
-
+    fallenPieces(&board[move.x2][move.y2],n_player);
 }
 
 
-struct piece *fallenPieces(struct square *n_square, player *n_player) {
+void fallenPieces(struct square *n_square, player *n_player) {
     /*This function takes in a square and removes pieces from the bottom of the stack exceeding the STACK_LIMIT
-     Then the new stack of fallen pieces are counted and allocated towards the players own_pieces and adversary members. FallenPieces is returned
+     Then the new stack of fallen pieces are counted and allocated towards the players own_pieces and adversary members.
      */
 
-    if(get_stack_count(n_square->stack) <= STACK_LIMIT) return NULL;
+    if(get_stack_count(n_square->stack) <= STACK_LIMIT) return ;
     printStack(n_square->stack,"new square ->");
 
     piece *tempStack = n_square->stack;
@@ -145,7 +130,9 @@ struct piece *fallenPieces(struct square *n_square, player *n_player) {
     for (int i = 0; i < count-1; ++i) {
         new_stack = new_stack->next;
     }
+    //square is now with in LIMIT
     new_stack->next = NULL; // set the next pointer of n_square to null
+
     /* assign the final stack the limited stack tempStack of n_square */
     final_stack = tempStack;
     tempStack = final_stack; // assign temp to allow to iterate over the stack to check pieces
@@ -166,7 +153,6 @@ struct piece *fallenPieces(struct square *n_square, player *n_player) {
     if(final_stack != NULL){
         printStack(final_stack, "Fallen Stack ->");
     }
-    return final_stack;
 
 
 }
@@ -196,12 +182,12 @@ Move GetValidMove(struct square board[BOARD_SIZE][BOARD_SIZE],player n_player,bo
 
         /*  Validation  */
         bool isEmpty = get_stack_count(board[tempX][tempY].stack) == 0;
-        bool isSameColor = board[tempX][tempY].stack != NULL && board[tempX][tempY].stack->p_color != n_player.player_color;
+        bool isSameColor = board[tempX][tempY].stack != NULL && board[tempX][tempY].stack->p_color == n_player.player_color;
         /* Invalid conditions */
         if(!check_bounds(board,move)){ continue;}; // outside of bounds
         if (isEmpty && !fromReserves) { continue; } // empty and not from reserves
-        if (isSameColor && !fromReserves) {
-            //Print error to user with coloring of error
+        if (!isSameColor && !fromReserves) {
+            //Print error to user with coloring of erro
             printf("%sSelect a %s coloured square%s\n",ANSI_COLOR_ERROR, n_player.player_color ? "blue" : "red",ANSI_COLOR_RESET);
             continue;
         }
@@ -281,8 +267,7 @@ bool check_bounds(struct square board[BOARD_SIZE][BOARD_SIZE],Move m){
 
 int can_player_move(struct square board[BOARD_SIZE][BOARD_SIZE]){
     /*
-     * This function will check if there is a player that has no pieces on the board and if so return its player id
-     * else return -1 if all players have at least 1 piece on the table to play
+     *
      * */
 
     //  Counts the amount of pieces for each player on the board

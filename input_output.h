@@ -23,7 +23,7 @@ typedef struct Step{
 //Function to print the board
 void display_logo();
 void display_gameover();
-int display_instructions(square board[BOARD_SIZE][BOARD_SIZE],player n_player);
+int display_player_options(square **board, player n_player);
 void print_board(square board[BOARD_SIZE][BOARD_SIZE]);
 void printStack(struct piece *stack,char *string);
 void GetSteps(int *steps,int count);

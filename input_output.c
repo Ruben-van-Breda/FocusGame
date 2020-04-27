@@ -167,7 +167,7 @@ int display_start_instructions(int type){
     return 0;
 }
 
-int display_instructions(square board[BOARD_SIZE][BOARD_SIZE],player n_player){
+int display_player_options(square **board, player n_player){
     printf("%s",ANSI_COLOR_MAGENTA); // set console color
 
     wprintf(L"%s %lc you own %d pieces\n",n_player.name,n_player.player_color?UI_BLUE_CIRCLE:UI_RED_CIRCLE,n_player.own_pieces);

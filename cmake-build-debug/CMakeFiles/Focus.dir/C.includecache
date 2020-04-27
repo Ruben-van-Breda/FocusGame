@@ -36,3 +36,19 @@ input_output.h
 game_init.h
 /Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/game_init.h
 
+/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/main.c
+stdio.h
+-
+stdlib.h
+-
+input_output.h
+/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/input_output.h
+GameLogic.h
+/Users/rubenvanbreda/OneDrive/UCD/Software Engineering Project/Focus/Focus/GameLogic.h
+fcntl.h
+-
+zconf.h
+-
+wchar.h
+-
+

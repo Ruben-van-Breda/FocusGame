@@ -33,7 +33,7 @@ typedef struct Move{
 //functionality prototypes
 int get_stack_count(piece *n_stack);
 struct piece * push(color n_color,struct piece *top);
-struct piece *fallenPieces(struct square *n_square1,player *p);
+void fallenPieces(struct square *n_square1,player *p);
 struct player playerUpdate(player *p, int own,int adv);
 void testInFunc(struct player *p);
 struct square * pushStack(struct square *n_square1, struct square *n_square2);

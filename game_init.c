@@ -46,12 +46,6 @@ void initialize_players(player players[PLAYERS_NUM]){
     //Display the players colours to user
     printf("--- Players Key ---\n");
     setlocale(LC_CTYPE, "");
-    wchar_t ui_empty = UI_EMPTY_CODE;
-    wchar_t ui_invalid = UI_INVALID_CODE;
-    wchar_t ui_p1 = UI_PLAYER1_CODE;
-    wchar_t ui_p2 = UI_PLAYER2_CODE;
-
-//    wprintf(ANSI_COLOR_RED L"empty square %lc\n%s", ui_empty ,ANSI_COLOR_RESET);
     for (int j = 0; j < PLAYERS_NUM; ++j) {
 
         wprintf(L"%s is %s ",players[j].name,(players[j].player_color?"blue":"red"));
