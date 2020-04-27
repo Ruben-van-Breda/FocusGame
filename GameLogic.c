@@ -74,13 +74,15 @@ int get_stack_count(piece *n_stack) {
 
 void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE],char *string,player *n_player,bool fromReserves) {
 
-    printf("%s",n_player->player_color?ANSI_COLOR_BLUE:ANSI_COLOR_RED);
+    printf("%s",n_player->player_color?ANSI_COLOR_BLUE:ANSI_COLOR_RED); //set console color
 
     bool isValidChoice = false; //checks that the player can move in a valid square
-    wprintf(L"%s %lc, which square would you like to move: ",n_player->name,n_player->player_color?UI_BLUE_CIRCLE:UI_RED_CIRCLE);
-    Move move = GetValidMove(board,*n_player,fromReserves);
+
     if(fromReserves){
         printf("Playing from reserves\n");
+        wprintf(L"%s %lc, which square would you like to place your piece: ",n_player->name,n_player->player_color?UI_BLUE_CIRCLE:UI_RED_CIRCLE);
+        Move move = GetValidMove(board,*n_player,fromReserves);
+        /*  Preform Move    */
         board[move.x1][move.y1].stack = push(n_player->player_color, board[move.x1][move.y1].stack);
         playerUpdate(n_player,0,0);
         piece * fallenStack = malloc(sizeof(piece)*STACK_LIMIT);
@@ -89,6 +91,9 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE],char *string,player *n
         printStack(board[move.x1][move.y1].stack, "");
         return;
     }
+
+    wprintf(L"%s %lc, which square would you like to move: ",n_player->name,n_player->player_color?UI_BLUE_CIRCLE:UI_RED_CIRCLE);
+    Move move = GetValidMove(board,*n_player,fromReserves);
     printf("[%d][%d] -> ",move.x1,move.y1);
     printStack(board[move.x1][move.y1].stack, "");
 
@@ -125,7 +130,7 @@ struct piece *fallenPieces(struct square *n_square, player *n_player) {
 
     //printf("stack size = %d\n",get_stack_count(n_square->stack));
     if(get_stack_count(n_square->stack) <= STACK_LIMIT) return NULL;
-    printStack(n_square->stack,"n_square ->");
+    printStack(n_square->stack,"new square ->");
 
     piece *tempStack = n_square->stack;
     piece * final_stack = malloc(sizeof(piece)*STACK_LIMIT);
@@ -203,6 +208,7 @@ Move GetValidMove(struct square board[BOARD_SIZE][BOARD_SIZE],player n_player,bo
         int sc_result = scanf("%d %d", &tempX, &tempY);
 
         if(sc_result!=2){
+//            clear_screen();
             printf("%sInvalid input. %s\n",ANSI_COLOR_ERROR,ANSI_COLOR_RESET);
             continue;
         }

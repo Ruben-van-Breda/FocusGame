@@ -131,6 +131,7 @@ int display_start_instructions(int type){
     bool playGame = false;
     while(playGame == false){
         if(choice != '1' || choice != '2' || choice != '3'){
+            clear_screen();
             getchar();
             printf(ANSI_COLOR_MAGENTA"\n___ Instructions ___\n");
             printf("1) Start Game\n");
@@ -187,7 +188,10 @@ int display_instructions(square board[BOARD_SIZE][BOARD_SIZE],player n_player){
         printf("input: ");
         scanf("%c",&input);
         if(input != '0' && input != '1' && input != '2'){
-            printf("%sInvalid input %c%s\n",ANSI_COLOR_ERROR,input,ANSI_COLOR_RESET);
+            clear_screen();
+
+            printf("\n%sInvalid input %c%s",ANSI_COLOR_ERROR,input,ANSI_COLOR_RESET);
+//            fprintf(stdout,10);
             continue;
         }
 
@@ -218,23 +222,37 @@ void display_logo(){
     printf("%s*     \t%s*****\t %s****\t%s* * *\t %s*****\t %s******\n",ANSI_COLOR_BLUE,ANSI_COLOR_RED,ANSI_COLOR_BLUE,ANSI_COLOR_RED,ANSI_COLOR_BLUE,ANSI_COLOR_RED);
     printf("____________________________________________ %sby Ruben van Breda %s\n",ANSI_COLOR_MAGENTA,ANSI_COLOR_RESET);
 
+}
+
+void display_gameover(){
+
+    printf("%s******\t   *   \t*******\t******\t \t%s******\t*      *\t******\t******\n",ANSI_COLOR_BLUE,ANSI_COLOR_RED);
+    printf("%s*     \t *   * \t*  *  *\t*     \t \t%s*    *\t*      *\t*     \t*    *\n",ANSI_COLOR_BLUE,ANSI_COLOR_RED);
+    printf("%s*  ***\t ***** \t*  *  *\t******\t \t%s*    *\t *    * \t******\t*****\n",ANSI_COLOR_BLUE,ANSI_COLOR_RED);
+    printf("%s*    *\t *   * \t*  *  *\t*     \t \t%s*    *\t  *  *  \t*     \t* *\n",ANSI_COLOR_BLUE,ANSI_COLOR_RED);
+    printf("%s******\t *   * \t*  *  *\t******\t \t%s******\t   **   \t******\t*   *\n",ANSI_COLOR_BLUE,ANSI_COLOR_RED);
+    printf("%s",ANSI_COLOR_RESET);
 
 
 
 
 }
 
-void clear_screen(){
-//int c;
-//while((c=getchar()) != '\n' && c != ' ' && c != '\t' && c !=  EOF);
-//fflush(stdin);
-#if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
-        system("clear");
-#endif
 
-#if defined(_WIN32) || defined(_WIN64)
-        system("cls");
-#endif
+void clear_screen(){
+    int c;
+while((c=getchar()) != '\n' && c != ' ' && c != '\t' && c !=  EOF);
+fflush(stdin);
+    printf("Press enter");
+
+
+//#if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
+//        system("clear");
+//#endif
+//
+//#if defined(_WIN32) || defined(_WIN64)
+//        system("cls");
+//#endif
 
 }
 char ToLowerCase(char ch){

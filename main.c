@@ -17,6 +17,7 @@ square board[BOARD_SIZE][BOARD_SIZE];
 
 int main() {
     display_logo();
+    display_gameover();
     display_start_instructions(0);
 
     // declaration of the players and the board
@@ -128,7 +129,7 @@ int main() {
 
     /*  We have a winner   */
     if(winner != -1){
-        printf("\n\n_____GAME_OVER______\n");
+        display_gameover();
         wprintf(L"%s %lc WINS with %d captured pieces\n",players[winner].name,players[winner].player_color?UI_BLUE_CIRCLE:UI_RED_CIRCLE,players[winner].adversary);
 
     }
