@@ -73,7 +73,8 @@ int get_stack_count(piece *n_stack) {
 }
 
 void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE],char *string,player *n_player,bool fromReserves) {
-
+    /*  This function handles the logic to preform a move from a user per turn
+     * */
     printf("%s",n_player->player_color?ANSI_COLOR_BLUE:ANSI_COLOR_RED); //set console color
 
     bool isValidChoice = false; //checks that the player can move in a valid square
@@ -84,17 +85,19 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE],char *string,player *n
         Move move = GetValidMove(board,*n_player,fromReserves);
         /*  Preform Move    */
         board[move.x1][move.y1].stack = push(n_player->player_color, board[move.x1][move.y1].stack);
-        playerUpdate(n_player,0,0);
+//        playerUpdate(n_player,0,0);
+        n_player->own_pieces -= 1;
         piece * fallenStack = malloc(sizeof(piece)*STACK_LIMIT);
         fallenStack = fallenPieces(&board[move.x2][move.y2],&n_player);
         printf("[%d][%d] -> ",move.x1,move.y1);
         printStack(board[move.x1][move.y1].stack, "");
         return;
     }
-
+    /*  prompt player to enter a square */
     wprintf(L"%s %lc, which square would you like to move: ",n_player->name,n_player->player_color?UI_BLUE_CIRCLE:UI_RED_CIRCLE);
+    /* get a valid move from user   */
     Move move = GetValidMove(board,*n_player,fromReserves);
-    printf("[%d][%d] -> ",move.x1,move.y1);
+    printf("[%d][%d] -> ",move.x1,move.y1); // display square to player
     printStack(board[move.x1][move.y1].stack, "");
 
     /* Get steps from user */
@@ -113,9 +116,9 @@ void MakeMove(struct square board[BOARD_SIZE][BOARD_SIZE],char *string,player *n
     //TODO: LOGIC FOR FALLEN PIECES OF A STACK
     piece * fallenStack = malloc(sizeof(piece)*STACK_LIMIT);
     fallenStack = fallenPieces(&board[move.x2][move.y2],n_player);
-    if(fallenStack != NULL){
-        printStack(fallenStack, "Fallen Stack ->");
-    }
+//    if(fallenStack != NULL){
+//        printStack(fallenStack, "Fallen Stack ->");
+//    }
 
 
 
@@ -128,7 +131,6 @@ struct piece *fallenPieces(struct square *n_square, player *n_player) {
      Then the new stack of fallen pieces are counted and allocated towards the players own_pieces and adversary members. FallenPieces is returned
      */
 
-    //printf("stack size = %d\n",get_stack_count(n_square->stack));
     if(get_stack_count(n_square->stack) <= STACK_LIMIT) return NULL;
     printStack(n_square->stack,"new square ->");
 
@@ -140,23 +142,15 @@ struct piece *fallenPieces(struct square *n_square, player *n_player) {
         tempStack = tempStack->next;
         count++;
     }
-//    printStack(tempStack,"tempStack ->");
-//    printStack(new_stack,"newStack bfr ->");
-//
     for (int i = 0; i < count-1; ++i) {
         new_stack = new_stack->next;
     }
-    new_stack->next = NULL;
-//    printStack(new_stack,"newStack aft ->");
-
-//    n_square->stack = new_stack;
-//    printStack(n_square->stack,"out n_square ->");
-
+    new_stack->next = NULL; // set the next pointer of n_square to null
+    /* assign the final stack the limited stack tempStack of n_square */
     final_stack = tempStack;
-    tempStack = final_stack;
+    tempStack = final_stack; // assign temp to allow to iterate over the stack to check pieces
 
-
-     /* Add the fallen pieces to own_pieces and adversary*/
+     /* add the fallen pieces to own_pieces and adversary*/
     if(tempStack!=NULL){
         int my_pieces = n_player->own_pieces;
         int others = n_player->adversary;
@@ -165,72 +159,56 @@ struct piece *fallenPieces(struct square *n_square, player *n_player) {
             else{ others += 1;} // not my piece
             tempStack = tempStack->next;
         }
-        //TODO: own pieces not updating on player in main method
-//          Assign new values to the players members
-//        n_player.own_pieces = my_pieces;
-//        n_player.adversary = others;
-        playerUpdate(n_player,my_pieces,others);
-//        printf("\nmy pieces = %d, adv = %d\n",n_player->own_pieces,n_player->adversary);
-
-
-
+        /*  assign player values    */
+        n_player->own_pieces = my_pieces;
+        n_player->adversary = others;
+    }
+    if(final_stack != NULL){
+        printStack(final_stack, "Fallen Stack ->");
     }
     return final_stack;
 
 
 }
-player playerUpdate(player *p,int own,int adv){
-    p->own_pieces = own;
-    p->adversary = adv;
-    return *p;
-}
-
-void testInFunc(struct player *p){
-    *p = playerUpdate(p,1,0);
-}
 
 Move GetValidMove(struct square board[BOARD_SIZE][BOARD_SIZE],player n_player,bool fromReserves){
     /*  This function will prompt the user to enter a valid row and column values on a board
      * depending on the param fromReserves which will allow a pos which is empty or not of their color
-     *
      * */
-    printf("%s",ANSI_COLOR_RESET);
+    printf("%s",ANSI_COLOR_RESET); // reset the console color
 
-    bool isValidChoice = false;
-    int tempX = -1, tempY = -1;
-    Move move;
-    //which square would you like to move:
+    bool isValidChoice = false; // this will keep track if a valid choice has been made
+    int tempX, tempY; // the temporary values for x and y
+    Move move; // The players move
     while (isValidChoice == false) {
         getchar();
-
-//        printf("%s, which square would you like to %s: ", n_player.name,fromReserves?"place your piece":"move");
-//        printf("%s",string);
+        /*  Get input from player   */
         int sc_result = scanf("%d %d", &tempX, &tempY);
-
+        /* 2 correct values were not entered */
         if(sc_result!=2){
-//            clear_screen();
+            //Print error to player
             printf("%sInvalid input. %s\n",ANSI_COLOR_ERROR,ANSI_COLOR_RESET);
             continue;
         }
+        /*  Set move values */
         move.x1 = tempX; move.x2 = move.x1;
-        move.y1 = tempY;move.y2 = move.y1;
-        if(!check_bounds(board,move)){ continue;};
-        bool isEmpty = get_stack_count(board[tempX][tempY].stack) == 0;
-        if (isEmpty && !fromReserves) { continue; }
-        else if(isEmpty && fromReserves){isValidChoice = true; break;}
-        bool isSameColor = board[tempX][tempY].stack != NULL && board[tempX][tempY].stack->p_color != n_player.player_color;
-        if(isSameColor && fromReserves){isValidChoice = true; break;}
+        move.y1 = tempY; move.y2 = move.y1;
 
-        if (isSameColor) {
+        /*  Validation  */
+        bool isEmpty = get_stack_count(board[tempX][tempY].stack) == 0;
+        bool isSameColor = board[tempX][tempY].stack != NULL && board[tempX][tempY].stack->p_color != n_player.player_color;
+        /* Invalid conditions */
+        if(!check_bounds(board,move)){ continue;}; // outside of bounds
+        if (isEmpty && !fromReserves) { continue; } // empty and not from reserves
+        if (isSameColor && !fromReserves) {
+            //Print error to user with coloring of error
             printf("%sSelect a %s coloured square%s\n",ANSI_COLOR_ERROR, n_player.player_color ? "blue" : "red",ANSI_COLOR_RESET);
             continue;
         }
-        /* Valid condition */
-        if(sc_result == 2 && board[tempX][tempY].type == VALID && fromReserves){
-            isValidChoice = true;
-            break;
-        }
-        /* Valid condition */
+        /* Valid conditions */
+        else if(isEmpty && fromReserves){isValidChoice = true; break;}
+        if(isSameColor && fromReserves){isValidChoice = true; break;}
+        if(sc_result == 2 && board[tempX][tempY].type == VALID && fromReserves){ isValidChoice = true; break;}
         else if (sc_result == 2 && board[tempX][tempY].type == VALID &&
             board[tempX][tempY].stack->p_color == n_player.player_color) {
             isValidChoice = true;
@@ -239,7 +217,7 @@ Move GetValidMove(struct square board[BOARD_SIZE][BOARD_SIZE],player n_player,bo
     return move;
 }
 Move GetValidDestination(struct square board[BOARD_SIZE][BOARD_SIZE],int *steps,Move n_move,int moves){
-    /*  This function will insure a valid  move is returned if the steps are valid*/
+    /*  This function will insure a valid  move is returned if the steps are valid  */
     Move temp = n_move;
     temp = ComputeDestination(board,steps,temp,moves);
     while(temp.x1 == 99){ // 99 is to act as a NULL indicator
@@ -250,39 +228,36 @@ Move GetValidDestination(struct square board[BOARD_SIZE][BOARD_SIZE],int *steps,
 }
 
 struct Move ComputeDestination(struct square board[BOARD_SIZE][BOARD_SIZE],int *steps,Move n_move,int moves){
+    /*This function takes in a move with x1 and y1 assigned and a array of steps as param.
+     * It will compute the transformation of square1 by applying the steps
+     * the function will validate that the destination square is a in bounds */
     Move temp = n_move;
     int x = temp.x1;
     int y = temp.y1;
-    bool isValid = false;
-    while(isValid == false) {
-        int i = 0;
-        /* compute the destination coordinates */
-        while (i<moves) {
-            if (*(steps+i)== UP) {
-                x -= 1;
-            }  if (*(steps+i) == DOWN) {
-                x += 1;
-            }  if (*(steps+i) == RIGHT) {
-                y += 1;
-            }  if (*(steps+i) == LEFT) {
-                y -= 1;
-            }
-            i++;
+    int i = 0;
+    /* compute the destination coordinates */
+    while (i<moves) {
+        if (*(steps+i)== UP) {
+            x -= 1;
+        } if (*(steps+i) == DOWN) {
+            x += 1;
+        } if (*(steps+i) == RIGHT) {
+            y += 1;
+        } if (*(steps+i) == LEFT) {
+            y -= 1;
         }
-
-        n_move.x2 = x;
-        n_move.y2 = y;
-
-        if (check_bounds(board,n_move)) {
-            isValid = true;
-        }
-        else{
-            temp.x1 = 99;
-            return temp;
-        }
-
+        i++;
     }
-    return n_move;
+    /*  Assign values for x2 and y2 */
+    n_move.x2 = x;
+    n_move.y2 = y;
+    // if the move is out of bounds
+    if (!check_bounds(board,n_move)) {
+        temp.x1 = 99; // set a null indicator
+        return temp;
+    }
+    return n_move; // valid move
+
 }
 
 bool check_bounds(struct square board[BOARD_SIZE][BOARD_SIZE],Move m){
@@ -300,40 +275,44 @@ bool check_bounds(struct square board[BOARD_SIZE][BOARD_SIZE],Move m){
         printf("%sInvalid square%s\n",ANSI_COLOR_ERROR,ANSI_COLOR_RESET);
         return false;
     }
-
+    /*  is valid position   */
     return true;
 }
 
 int can_player_move(struct square board[BOARD_SIZE][BOARD_SIZE]){
-    /*This function will check if there is a player that has no pieces on the board and if so return its player id
-     * else return -1 if all players have at least 1 piece on the table to play*/
+    /*
+     * This function will check if there is a player that has no pieces on the board and if so return its player id
+     * else return -1 if all players have at least 1 piece on the table to play
+     * */
+
+    //  Counts the amount of pieces for each player on the board
     int player_counter[PLAYERS_NUM];
-    //Initialise the player frequency
+    //  Initialise the player frequency to all zero values
     for (int k = 0; k < PLAYERS_NUM; ++k) {player_counter[k] = 0;}
     /*  Add up player pieces on board   */
     for(int i = 0; i < BOARD_SIZE; i ++){
         for (int j = 0; j < BOARD_SIZE; j++){
+            //Check that the square is valid and that the stack is not null
             if(board[i][j].type == VALID && board[i][j].stack != NULL ) {
-                color top = board[i][j].stack->p_color;
+                color top = board[i][j].stack->p_color; //top color
                 switch (top){
                     case RED:
-                        player_counter[RED]++;
+                        player_counter[RED]++; // increase the counter for the appropriate player
                         break;
                     case BLUE:
-                        player_counter[BLUE]++;
+                        player_counter[BLUE]++;// increase the counter for the appropriate player
                         break;
                 }
             }
         }
     }
-//    wprintf(ANSI_COLOR_BLUE L"%lc%d%s\t", UI_BLUE_CIRCLE, get_stack_count(board[i][j].stack),ANSI_COLOR_RESET);}
+    // Print info to players
     wprintf(L"\n-----%d %lc, %d %lc-----\n",player_counter[0],UI_RED_CIRCLE,player_counter[1],UI_BLUE_CIRCLE);
-    bool playerCanMove = true;
+    bool playerCanMove = true; // checks if there is a player that can move
+    /*  Loop through the players frequency array    */
     for (int l = 0; l < PLAYERS_NUM; ++l) {
-        playerCanMove = (player_counter[l] > 0);
-        if(playerCanMove == false){
-            return l;
-        }
+        playerCanMove = (player_counter[l] > 0); // if the player has pieces on the board
+        if(playerCanMove == false){ return l; } // if the player doesnt have any pieces, return the index of the loser
     }
     return -1; //play on, no issues
 }
