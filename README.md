@@ -1,2 +1,2 @@
 # FocusGame
-Focus/Domination Game, COM100f0
+Focus/Domination Game, COM10010
