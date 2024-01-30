@@ -3,6 +3,9 @@
 ## Introduction
 FocusGame is a strategy board game implemented in C. This project demonstrates proficiency in C programming, with an emphasis on efficient algorithm development, data structure utilization, and user interface design. The game offers a challenging and engaging experience, showcasing my ability to translate complex logic into a playable game format.
 
+![image](https://github.com/Ruben-van-Breda/FocusGame/assets/15136241/c703daf3-5a65-46b2-bb38-271d2cf5cbf4)
+
+
 ## Features
 - Strategy-based board game logic entirely written in C.
 - Console-based user interface for easy navigation and interaction.
