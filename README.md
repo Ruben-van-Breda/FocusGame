@@ -25,7 +25,7 @@ To run FocusGame on your local machine, follow these steps:
 ```
 3. Compile the game (ensure you have a C compiler installed):
 ```bash
-   gcc -o focusgame focusgame.c
+   gcc -o main main.c
 ```
 4. Run the game:
 ```bash
